@@ -79,6 +79,26 @@ void Player::Open(string object_name) {
 	//cout << endl;
 }
 
+void Player::Push(string object_name) {
+	cout << endl;
+	Entity* entity_to_push = room->FindChild(object_name);
+	bool can_push_entity = entity_to_push->can_push;
+
+	if (entity_to_push != NULL && can_push_entity) {
+		if (item_in_hands == NULL) {
+			room->UnlockExit(entity_to_push);
+			entity_to_push->ChangeParentTo(NULL);
+			delete entity_to_push;
+			cout << "The " << B_RED_ << object_name << RESET_ << " has been pushed. I have a new way now." << endl;
+		}
+		else cout << "I cant push with objects in hands. " << endl;
+	}
+	else {
+		cout << "I cant push this object. " << endl;
+	}
+	cout <<endl;
+}
+
 void Player::Take(string object_name) {
 	cout << endl;
 	if (item_in_hands != NULL) cout << "You are already holding: " << B_RED_ << item_in_hands->name << RESET_ << endl;

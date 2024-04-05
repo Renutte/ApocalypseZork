@@ -26,6 +26,7 @@ public:
 	void Drop();
 	void Inventory();
 	void Take(string object_name, string from_object_name);
+	void Push(string object_name);
 
 public:
 	Room* room;

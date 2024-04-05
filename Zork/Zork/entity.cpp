@@ -6,29 +6,42 @@
 Entity::Entity(const char* name, const char* description, Entity* parent, bool visible) :
 	name(name), description(description), parent(parent), visible(visible)
 {
-	if (parent != NULL) {
-		parent->container.push_back(this);
-		//cout << "--- Entity::Entity with name: " << name << " and parent: " << parent->name << ", now parent contains " << parent->container.size() << " objects " << endl;
-		//Examine();
-	}
+	if (parent != NULL) parent->container.push_back(this);
+	can_push = false;
+	can_activate = false;
+	activated = false;
+	can_unlock = false;
+	password = "";
 }
 
 Entity::Entity(const char* name, const char* description, Entity* parent, bool visible, Item* opens) :
 	name(name), description(description), parent(parent), visible(visible), opens(opens)
 {
-	if (parent != NULL) {
-		parent->container.push_back(this);
-		//cout << "--- Entity::Entity with name: " << name << " and parent: " << parent->name << ", now parent contains " << parent->container.size() << " objects " << endl;
-		//Examine();
-	}
+	if (parent != NULL) parent->container.push_back(this); 
+	can_push = false;
+	can_activate = false;
+	activated = false;
+	can_unlock = false;
+	password = "";
 }
-
-
 
 Entity::~Entity()
 {
 	
 }
+
+// Pushable entities disappear when pushed
+void Entity::SetPushable(bool pushable) {
+	can_push = pushable;
+}
+
+//void Entity::Push() {
+//	if (can_push) {
+//		
+//	} else {
+//		cout << endl << "I cant push this object." << endl << endl;
+//	}
+//}
 
 void Entity::ChangeParentTo(Entity* new_parent)
 {
@@ -41,7 +54,7 @@ void Entity::Look(string entity_name) const
 {
 	Entity* entity_to_look = FindChild(entity_name);
 	if (entity_to_look != NULL) entity_to_look->Look();
-	else cout << endl << "I cant look this object" << endl << endl;
+	else cout << endl << "I cant look this object." << endl << endl;
 
 }
 

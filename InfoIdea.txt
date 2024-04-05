@@ -92,3 +92,21 @@
     B_RED_ -> Entitys
     B_BLUE_ -> Rooms
     B_GREEN_ -> Directions
+
+
+=== TESTS:
+
+look
+directions
+go east
+explore
+push BDoor
+directions
+push Rock
+directions
+explore
+go east
+look
+go west
+look
+explore

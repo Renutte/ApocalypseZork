@@ -26,6 +26,8 @@ public:
 	void Examine() const;
 	Entity* FindChild(string entity_name) const;
 	void Look(string entity_name) const;
+	void SetPushable(bool pushable);
+	//void Push();
 
 public:
 	string name;
@@ -34,6 +36,17 @@ public:
 	list<Entity*> container;
 	bool visible;
 	Item* opens;
+
+// Entity properties
+public:
+	// Is a movable object (Rock)
+	bool can_push;
+	// Is a activable object (Switch)
+	bool can_activate;
+	bool activated;
+	// Is a unlockable object (Safe box)
+	bool can_unlock;
+	string password;
 };
 
 #endif

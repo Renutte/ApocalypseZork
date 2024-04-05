@@ -21,6 +21,7 @@ World::World()
 	// === ENTITYS
 		// == Entrance
 		Entity* rock = new Entity("Rock", "A huge rock, seems i can push it.", entrance, true);
+		rock->SetPushable(true);
 		Entity* plant_test = new Item("plant_test", "plant_test description.", entrance);
 		// == Main Room
 		Entity* corpse = new Entity("Corpse", "This corpse holds a Note and a Blue Key.", main_room, true);
@@ -98,7 +99,7 @@ bool World::ParseCommand(vector<string>& args)
 		else if (Same(args[0], "open")) player->Open(args[1]);
 	//	else if (Same(args[0], "leave")) player->Leave(args);
 	//	else if (Same(args[0], "read")) player->Read(args);
-	//	else if (Same(args[0], "push")) player->Push(args);
+		else if (Same(args[0], "push")) player->Push(args[1]);
 	//	else if (Same(args[0], "use")) player->Use(args);
 	//	else if (Same(args[0], "activate")) player->Activate(args);
 		else if (Same(args[0], "go")) player->Go(args[1]);
