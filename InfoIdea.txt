@@ -1,3 +1,9 @@
+     _____                 _                    _____         _  
+    |  _  |___ ___ ___ ___| |_ _ ___ ___ ___   |__   |___ ___| |_
+    |     | . | . |  _| .'| | | | . |_ -| -_|  |   __| . |  _| '_|
+    |__|__|  _|___|___|__,|_|_  |  _|___|___|  |_____|___|_| |_,_|
+          |_|               |___|_|                               
+
 === INTRODUCTION:
     In a post-apocalyptic world, there is no drinkable water on the surface, and pure air is scarce. 
     The remaining humans on Earth must use oxygen tanks to breathe. 
@@ -82,3 +88,7 @@
 === IDEAS:
     - When oxygen reaches 0, there is a countdown (30s) and you cannot move from the room.
 
+=== COLORS:
+    B_RED_ -> Entitys
+    B_BLUE_ -> Rooms
+    B_GREEN_ -> Directions

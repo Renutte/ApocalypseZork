@@ -3,7 +3,6 @@
 #include "Entity.h"
 #include <list>
 
-// ----------------------------------------------------
 Entity::Entity(const char* name, const char* description, Entity* parent, bool visible) :
 	name(name), description(description), parent(parent), visible(visible)
 {
@@ -31,17 +30,11 @@ Entity::~Entity()
 	
 }
 
-// ----------------------------------------------------
 void Entity::ChangeParentTo(Entity* new_parent)
 {
-	//cout << "--- Entity::ChangeParentTo " << endl;
-	if (parent != NULL)
-		parent->container.remove(this);
-
+	if (parent != NULL) parent->container.remove(this);
 	parent = new_parent;
-
-	if (parent != NULL)
-		parent->container.push_back(this);
+	if (parent != NULL) parent->container.push_back(this);
 }
 
 void Entity::Look(string entity_name) const

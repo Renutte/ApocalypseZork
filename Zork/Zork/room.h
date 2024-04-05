@@ -24,6 +24,7 @@ public:
 	//Exit GetExitInfo(Direction direction);
 	void RemoveObstruction(Direction direction);
 	void Directions() const;
+	void UnlockExit(Entity* obstruction_object);
 
 public:
 	Exit* north_exit;
