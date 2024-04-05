@@ -1,0 +1,33 @@
+# Visual Studio generated files for C++ projects
+*.sdf
+*.opensdf
+*.sln.docstates
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.vcxproj.vspscc
+*.pdb
+*.idb
+*.ipch
+*.obj
+*.exe
+*.dll
+*.lib
+*.exp
+*.ilk
+*.tlog
+*.log
+*.tlog/
+
+# C++ precompiled headers
+*.pch
+
+# C++ compiler generated files
+*.aps
+*.ncb
+*.opendb
+*.suo
+
+# Output directories
+[Oo]bj/
+[Bb]in/
