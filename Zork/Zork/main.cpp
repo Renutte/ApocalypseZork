@@ -51,10 +51,10 @@ int main()
         getline(cin, player_input);
         Tokenize(player_input, args);
         if (args.size() > 0 && Same(args[0], "quit")) break;
-        if (world.Tick(args) == false) cout << endl << "Sorry, I do not understand your command." << endl << endl;
+        if (world.Tick(args) == false) cout << endl << "I donk understand you, what you want i do?" << endl << endl;
         args.clear();
     }
 
-    cout << endl << "Thanks for playing, Bye!" << endl;
+    cout << endl << "Thanks for playing :)" << endl;
     return 0;
 }

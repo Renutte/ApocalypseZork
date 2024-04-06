@@ -25,7 +25,8 @@ World::World()
 		Entity* plant_test = new Item("plant_test", "plant_test description.", entrance);
 		// == Main Room
 		Entity* corpse = new Entity("Corpse", "This corpse holds a Note and a Blue Key.", main_room, true);
-		Entity* note = new Item("Note", "Password: 2 + 2", corpse);
+		Entity* note = new Item("Note", "A note from the Corpse, if i read maybe i can get a hint...", corpse);
+		note->SetReadable(true, "'Password: 2 + 2'");
 		Item* blue_key = new Item("BKey", "Blue Key.", corpse);
 		// == Oxygen Store
 		Entity* shelf = new Entity("Shelf", "A large shelf with multiple objects, one of them is a Oxygen Tank, one of them is a Orange Key.", oxygen_store, true);
@@ -33,7 +34,9 @@ World::World()
 		Item* orange_key = new Item("OKey", "Orange key.", shelf);
 		// == Switch Room
 		Entity* generator = new Entity("Generator", "A generator with a switch i can activate, seems important to light all on.", switch_room, true);
+		generator->SetActivateable(true, false);
 		Entity* locker = new Entity("Locker", "A locked locker, i need a number combination. I see through the glass a Red Key.", switch_room, true);
+		locker->SetUnlockable(true, true);
 		Item* red_key = new Item("RKey", "Red Key.", locker);
 		// == Vault Entrance
 
@@ -87,6 +90,7 @@ bool World::ParseCommand(vector<string>& args)
 		else if (Same(args[0], "directions")) player->Directions();
 		else if (Same(args[0], "explore")) player->Examine();
 		else if (Same(args[0], "inventory")) player->Inventory();
+		else if (Same(args[0], "read")) player->Read("");
 		else if (Same(args[0], "drop")) player->Drop();
 		else ret = false;
 		break;
@@ -97,26 +101,31 @@ bool World::ParseCommand(vector<string>& args)
 		else if (Same(args[0], "look") ) player->parent->Look(args[1]);
 		else if (Same(args[0], "take")) player->Take(args[1]);
 		else if (Same(args[0], "open")) player->Open(args[1]);
+		else if (Same(args[0], "read")) player->Read(args[1]);
 	//	else if (Same(args[0], "leave")) player->Leave(args);
-	//	else if (Same(args[0], "read")) player->Read(args);
+		else if (Same(args[0], "unlock")) player->Unlock(args[1]);
 		else if (Same(args[0], "push")) player->Push(args[1]);
 	//	else if (Same(args[0], "use")) player->Use(args);
-	//	else if (Same(args[0], "activate")) player->Activate(args);
+		else if (Same(args[0], "activate")) player->Activate(args[1]);
 		else if (Same(args[0], "go")) player->Go(args[1]);
-	//	else ret = false;
+		else ret = false;
 		break;
 	}
 	case 3: // 3 Argument
 	{
+		ret = false;
 		break;
 	}
 	case 4: // 4 Argument
 	{
 		if (Same(args[0], "take") and Same(args[2], "from")) player->Take(args[1], args[3]);
-	//	else ret = false;
+		else ret = false;
 		break;
 	}
 	default:
+		cout << endl;
+		cout << "I donk understand you, what you want i do?" << endl;
+		cout << endl;
 		ret = false;
 	}
 

@@ -30,18 +30,33 @@ Entity::~Entity()
 	
 }
 
+void Entity::SetLockedTo(bool new_state) {
+	locked = new_state;
+}
+void Entity::SetUnlockable(bool unlockable, bool is_locked) {
+	locked = is_locked;
+	can_unlock = unlockable;
+}
+
 // Pushable entities disappear when pushed
 void Entity::SetPushable(bool pushable) {
 	can_push = pushable;
 }
 
-//void Entity::Push() {
-//	if (can_push) {
-//		
-//	} else {
-//		cout << endl << "I cant push this object." << endl << endl;
-//	}
-//}
+void Entity::SetReadable(bool readable, string read_text) {
+	read_description = read_text;
+	can_read = readable;
+}
+
+
+void Entity::SetActivateable(bool activetable, bool default_state) {
+	can_activate = activetable;
+	activated = default_state;
+}
+
+void Entity::SetActiveTo(bool activation) {
+	activated = activation;
+}
 
 void Entity::ChangeParentTo(Entity* new_parent)
 {
@@ -60,52 +75,40 @@ void Entity::Look(string entity_name) const
 
 void Entity::Look() const
 {
-	//cout << "--- Entity::Look " << endl;
 	cout << endl;
 	cout << B_RED_ << name << RESET_ << endl;
 	cout << description << endl;
 	cout << endl;
-
 }
 
 Entity* Entity::FindChild(string entity_name) const {
 	for (const auto& entity : container) {
-		if (entity->name == entity_name) return entity;
+		if ((Same(entity->name, entity_name))) return entity;
 	}
 	return NULL;
 }
 
 void Entity::Examine(string entity_name) const {
-	//cout << "--- Entity::Examine " << endl;
-	//
-	//cout << "Name: " << name << endl;
-	//cout << "Size of container: " << container.size() << endl;
-
-	//for (const auto& entity : container) {
-	//	//cout << "--- Entity_container::Examine " << endl;
-	//	if (entity->name == entity_name) entity->Look();
-	//}
-
-	Entity* entity_to_examine = FindChild(entity_name);
-	if (entity_to_examine != NULL) entity_to_examine->Examine();
-	else cout << endl << "I cant examine this object" << endl << endl;
+	if (entity_name == "") cout << "What you want to examine?" << endl;
+	else {
+		Entity* entity_to_examine = FindChild(entity_name);
+		if (entity_to_examine == NULL) cout << endl << "I dont see any " << B_RED_ << entity_name << RESET_ << " near me" << endl << endl;
+		else if (entity_to_examine->can_unlock && entity_to_examine->locked) cout << endl << B_RED_ << entity_to_examine->name << RESET_ << " is locked, you cant examine this." << endl << endl;
+		else entity_to_examine->Examine();
+	}
 }
 
 void Entity::Examine() const {
 	cout << endl;
-	cout << "This " << B_BLUE_ << name << RESET_ << " contains: ";
 
 	list<string> visibleItems;
 	for (auto& entity : container) {
-		if (entity->visible) {
-			visibleItems.push_back(entity->name);
-		}
+		if (entity->visible) visibleItems.push_back(entity->name); 
 	}
-
-	if (visibleItems.empty()) {
-		cout << B_RED_ << "nothing." << RESET_ << endl;
-	}
+	
+	if (visibleItems.empty()) cout << "Nothing interesting in " << B_RED_ << name << RESET_ << endl; 
 	else {
+		cout << "This " << B_BLUE_ << name << RESET_ << " contains: ";
 		auto it = visibleItems.begin();
 		while (true) {
 			cout << B_RED_ << *it << RESET_;

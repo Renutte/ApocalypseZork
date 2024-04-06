@@ -27,7 +27,11 @@ public:
 	Entity* FindChild(string entity_name) const;
 	void Look(string entity_name) const;
 	void SetPushable(bool pushable);
-	//void Push();
+	void SetReadable(bool readable, string read_text);
+	void SetActiveTo(bool activation);
+	void SetActivateable(bool activetable, bool default_state);
+	void SetLockedTo(bool new_state);
+	void SetUnlockable(bool unlockable, bool is_locked);
 
 public:
 	string name;
@@ -41,11 +45,15 @@ public:
 public:
 	// Is a movable object (Rock)
 	bool can_push;
+	// Is a readable object (Note)
+	bool can_read;
+	string read_description;
 	// Is a activable object (Switch)
 	bool can_activate;
 	bool activated;
 	// Is a unlockable object (Safe box)
 	bool can_unlock;
+	bool locked;
 	string password;
 };
 

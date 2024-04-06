@@ -54,9 +54,9 @@
             x = (North, South, East, West)
     
     == 4 Arg:
-        - Open x with y
-            x = (Doors, Box, Envelope)
-            y = (Keys)
+        - Unlock x with y
+            x = (SafeBox)
+            y = (Riddle password)
 
         - Take x from y
             x = (Key, Oxygen Tank, Note)
@@ -69,8 +69,7 @@
     ROOM 2:
         - Orange Door (Opens room 4)
         - Corpse
-            - Envelope
-                - Note (With riddle)
+            - Note (With riddle)
             - Blue Key
     ROOM 3:
         - Oxygen Tank
@@ -109,4 +108,42 @@ go east
 look
 go west
 look
+explore
+
+-- To the switch room
+push rock
+go east
+take bkey from corpse
+go west
+open bdoor
+go south
+take okey from shelf
+drop
+take okey
+take okey from shelf
+go north
+go eas
+go east
+open odoor
+directions
+go east
+explore
+
+-- To the switch room
+push rock
+go east
+take bkey from corpse
+go west
+open bdoor
+go south
+take okey from shelf
+drop
+take okey
+take okey from shelf
+go north
+go eas
+go east
+open odoor
+directions
+go east
 explore
