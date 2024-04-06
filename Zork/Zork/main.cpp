@@ -8,9 +8,6 @@
 
 using namespace std;
 
-#define BACKSPACE "\033[D\033[K"
-
-// -------------------------------------------------
 int main()
 {
     char key;

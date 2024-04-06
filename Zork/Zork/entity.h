@@ -31,7 +31,7 @@ public:
 	void SetActiveTo(bool activation);
 	void SetActivateable(bool activetable, bool default_state);
 	void SetLockedTo(bool new_state);
-	void SetUnlockable(bool unlockable, bool is_locked);
+	void SetUnlockable(bool unlockable, bool is_locked, string password_to_set);
 
 public:
 	string name;

@@ -36,7 +36,7 @@ World::World()
 		Entity* generator = new Entity("Generator", "A generator with a switch i can activate, seems important to light all on.", switch_room, true);
 		generator->SetActivateable(true, false);
 		Entity* locker = new Entity("Locker", "A locked locker, i need a number combination. I see through the glass a Red Key.", switch_room, true);
-		locker->SetUnlockable(true, true);
+		locker->SetUnlockable(true, true, "4");
 		Item* red_key = new Item("RKey", "Red Key.", locker);
 		// == Vault Entrance
 

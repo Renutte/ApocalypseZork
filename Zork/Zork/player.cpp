@@ -1,4 +1,8 @@
 #include <iostream>
+#include <string>
+#include <vector>
+#include <conio.h>
+
 #include "globals.h"
 #include "room.h"
 #include "exit.h"
@@ -128,8 +132,14 @@ void Player::Unlock(string object_name) {
 		else {
 			if (entity_to_unlock->can_unlock) {
 				if (entity_to_unlock->locked) {
-					entity_to_unlock->SetLockedTo(false);
-					cout << B_RED_ << entity_to_unlock->name << RESET_ << " unlocked" << endl;
+					cout << "Type code: ";
+					string player_input;
+					getline(cin, player_input);
+					if (Same(player_input, entity_to_unlock->password)) {
+						entity_to_unlock->SetLockedTo(false);
+						cout << "The password is correct! " << B_RED_ << entity_to_unlock->name << RESET_ << " is now unlocked." << endl;
+					}
+					else cout << "The password is not correct... Maybe if i try with other i can unlock it" << endl;
 				} else cout << B_RED_ << entity_to_unlock->name << RESET_ << " already unlocked" << endl;
 			}
 			else cout << B_RED_ << entity_to_unlock->name << RESET_ << " is not unclockable" << endl;

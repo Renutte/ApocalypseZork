@@ -33,9 +33,10 @@ Entity::~Entity()
 void Entity::SetLockedTo(bool new_state) {
 	locked = new_state;
 }
-void Entity::SetUnlockable(bool unlockable, bool is_locked) {
+void Entity::SetUnlockable(bool unlockable, bool is_locked, string password_to_set) {
 	locked = is_locked;
 	can_unlock = unlockable;
+	password = password_to_set;
 }
 
 // Pushable entities disappear when pushed
