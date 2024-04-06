@@ -21,6 +21,7 @@ public:
 	Entity(const char* name, const char* description, Entity* parent, bool visible, Item* opens);
 	~Entity();
 	void ChangeParentTo(Entity* new_parent);
+	void ChangeNameTo(string new_name);
 	void Look() const;
 	void Examine(string entity_name) const;
 	void Examine() const;
@@ -32,6 +33,8 @@ public:
 	void SetActivateable(bool activetable, bool default_state);
 	void SetLockedTo(bool new_state);
 	void SetUnlockable(bool unlockable, bool is_locked, string password_to_set);
+	Item* GetItemProperties();
+	void ChangeDescriptionTo(string new_description);
 
 public:
 	string name;

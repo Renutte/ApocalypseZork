@@ -56,35 +56,8 @@ void LookExit(Exit* aux_exit) {
 
 void Room::Look() const
 {
-	//cout << "--- Room::Look " << endl;
-
-	cout << endl;
 	cout << "You are now in the " << B_BLUE_ << name << RESET_ << endl;
 	cout << description << endl;
-	cout << endl;
-
-	//Directions();
-
-	//// List exits --
-	//for (list<Entity*>::const_iterator it = container.begin(); it != container.cend(); ++it)
-	//{
-	//	if ((*it)->type == EXIT)
-	//	{
-	//		Exit* ex = (Exit*)*it;
-	//		cout << "\nDirection (" << ex->GetNameFrom(this) << ") you see " << ex->GetDestinationFrom(this)->name;
-	//	}
-	//}
-
-	//// List items --
-	//for (list<Entity*>::const_iterator it = container.begin(); it != container.cend(); ++it)
-	//{
-	//	if ((*it)->type == ITEM)
-	//	{
-	//		Item* item = (Item*)*it;
-	//		cout << "\nThere is an item here: " << item->name;
-	//	}
-	//}
-
 }
 
 void Room::Directions() const {

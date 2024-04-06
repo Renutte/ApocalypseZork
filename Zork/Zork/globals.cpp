@@ -50,7 +50,7 @@ Direction stringToDirection(const string& str) {
 		return WEST;
 	}
 	else {
-		return ERROR;
+		return ERROR_DIRECTION;
 	}
 }
 

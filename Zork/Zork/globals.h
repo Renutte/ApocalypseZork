@@ -23,11 +23,13 @@
 
 #define RESET_ "\033[0m"
 
+#define EMOJI_SKULL "\xF0\x9F\x92\x80"
 
 #include <string>
 #include <list>
 #include <vector>
 #include <time.h>
+#include <Windows.h>
 
 using namespace std;
 
@@ -37,7 +39,7 @@ enum Direction
 	EAST,
 	NORTH,
 	WEST,
-	ERROR
+	ERROR_DIRECTION
 };
 
 string directionToString(Direction dir);

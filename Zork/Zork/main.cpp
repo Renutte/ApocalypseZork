@@ -1,4 +1,5 @@
 #include <iostream>
+#include <Windows.h>
 #include <string>
 #include <vector>
 #include <conio.h>
@@ -10,6 +11,8 @@ using namespace std;
 
 int main()
 {
+    SetConsoleOutputCP(CP_UTF8);
+
     char key;
     string player_input;
     vector<string> args;
@@ -44,6 +47,10 @@ int main()
     World world;
 
     while (true) {
+        if (world.GetMainPlayer()->IsDead()) { 
+            cout << EMOJI_SKULL << " YOU DIED " << EMOJI_SKULL << endl;
+            break; 
+        }
         cout << "> ";
         getline(cin, player_input);
         Tokenize(player_input, args);

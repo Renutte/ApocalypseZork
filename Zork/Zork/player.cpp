@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <string>
 #include <vector>
 #include <conio.h>
@@ -13,14 +13,15 @@ Player::Player(const char* title, const char* description, Room* roomToSet) :
 	Entity(title, description, (Entity*)roomToSet, false)
 {
 	room = roomToSet;
+	dead = false;
 }
 
 // ----------------------------------------------------
 void Player::Look() const
 {
-	//cout << "--- Player::Look " << endl;
-	//parent->Look();
-	room->Look();
+	cout << endl;
+	room->Look();	
+	cout << endl;
 }
 
 void Player::Directions() const
@@ -30,16 +31,56 @@ void Player::Directions() const
 
 void Player::Examine() const
 {
-	/*cout << "--- Player::Examine " << endl;
-	cout << "--- Player::Examine room: " << room->name << endl;
-	room->parent->Examine();*/
 	room->Examine();
+}
+
+void Player::SetRemainingOxygen(int new_oxygen) {
+	oxygen_remaining = new_oxygen;
+}
+void Player::SetOxygenLoosedPerMovement(int new_oxygen) {
+	oxygen_loosed_per_movement = new_oxygen;
+}
+
+void Player::Oxygen() {
+	cout << endl;
+	if (oxygen_remaining > 0) cout << "My oxygen levels are at " << B_YELLOW_ << oxygen_remaining << "%" << RESET_ << endl;
+	else {
+		cout << "There is no more oxygen" << endl;
+		dead = true;
+	}
+	cout << endl;
+}
+
+bool Player::IsDead() {
+	return dead;
+}
+
+void Player::Use(string object_name) {
+	cout << endl;
+	if (object_name == "") cout << "What you want to use?" << endl;
+	else {
+		if (item_in_hands == NULL) cout << "You need to hold something to use" << endl;
+		else {
+			if (item_in_hands->GetItemProperties() != NULL && item_in_hands->GetItemProperties()->oxygen_provided > 0) {
+				cout << "I refilled my oxygen with this " << B_RED_ << item_in_hands->name << RESET_ << endl;
+				SetRemainingOxygen(item_in_hands->GetItemProperties()->oxygen_provided + oxygen_remaining);
+				Oxygen();
+				item_in_hands->GetItemProperties()->oxygen_provided = 0;
+				item_in_hands->ChangeNameTo("Empty" + item_in_hands->name);
+				item_in_hands->ChangeDescriptionTo("A tank with 0% of Oxygen.");
+			}
+			else {
+				cout << "I cant do anything with this " << B_RED_ << item_in_hands->name << RESET_ << endl;
+			}
+		}
+	}
+	cout << endl;
 }
 
 void Player::Go(string direction_name) {
 	if (direction_name == "") cout << endl << "Where you want to go?" << endl << endl;
 	else {
-		if (stringToDirection(direction_name) == ERROR) cout << endl << "Cant recognize this direction " << endl << endl;
+		if (stringToDirection(direction_name) == ERROR_DIRECTION) cout << endl << "Cant recognize this direction " << endl << endl;
 		else {
 			Exit* exit = room->GetExit(stringToDirection(direction_name));
 			if (exit == NULL) {
@@ -51,7 +92,10 @@ void Player::Go(string direction_name) {
 			else {
 				room = exit->destination;
 				ChangeParentTo(exit->destination);
-				Look();
+				cout << endl;
+				room->Look();
+				SetRemainingOxygen(oxygen_remaining - oxygen_loosed_per_movement);
+				Oxygen();
 			}
 		}
 	}
@@ -110,17 +154,8 @@ void Player::Read(string object_name) {
 		if (item_in_hands != NULL && item_in_hands->can_read && (object_name == "" || Same(item_in_hands->name, object_name))) entity_to_read = item_in_hands;
 		if (entity_to_read == NULL) cout << "This object have not text i can read." << endl;
 		else cout << entity_to_read->read_description << endl;
-		cout << endl;
 	}
-	//cout << endl;
-	//if (object_name == "") cout << "What you want to read?" << endl;
-	//else {
-	//	Entity* entity_to_read = room->FindChild(object_name);
-	//	if (item_in_hands != NULL && item_in_hands->can_read && (object_name == "" || Same(item_in_hands->name, object_name))) entity_to_read = item_in_hands;
-	//	if (entity_to_read == NULL) cout << "I dont see any " << B_RED_ << object_name << RESET_ << endl;
-	//	else cout << entity_to_read->read_description << endl;
-	//}
-	//cout << endl;
+	cout << endl;
 }
 
 void Player::Unlock(string object_name) {

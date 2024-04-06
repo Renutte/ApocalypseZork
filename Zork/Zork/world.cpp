@@ -22,7 +22,6 @@ World::World()
 		// == Entrance
 		Entity* rock = new Entity("Rock", "A huge rock, seems i can push it.", entrance, true);
 		rock->SetPushable(true);
-		Entity* plant_test = new Item("plant_test", "plant_test description.", entrance);
 		// == Main Room
 		Entity* corpse = new Entity("Corpse", "This corpse holds a Note and a Blue Key.", main_room, true);
 		Entity* note = new Item("Note", "A note from the Corpse, if i read maybe i can get a hint...", corpse);
@@ -30,7 +29,8 @@ World::World()
 		Item* blue_key = new Item("BKey", "Blue Key.", corpse);
 		// == Oxygen Store
 		Entity* shelf = new Entity("Shelf", "A large shelf with multiple objects, one of them is a Oxygen Tank, one of them is a Orange Key.", oxygen_store, true);
-		Entity* oxygen_tank = new Item("Oxygen", "A tank full of Oxygen.", shelf);
+		Item* oxygen_tank = new Item("OTank", "A with 50% of Oxygen.", shelf);
+		oxygen_tank->SetOxygenProvided(50);
 		Item* orange_key = new Item("OKey", "Orange key.", shelf);
 		// == Switch Room
 		Entity* generator = new Entity("Generator", "A generator with a switch i can activate, seems important to light all on.", switch_room, true);
@@ -62,6 +62,8 @@ World::World()
 
 	// === PLAYER
 		player = new Player("Explorer", "You are an explorer searching for water, your oxygen level is decreasing.", entrance);
+		player->SetRemainingOxygen(40);
+		player->SetOxygenLoosedPerMovement(10);
 }
 
 bool World::Tick(vector<string>& args)
@@ -92,6 +94,7 @@ bool World::ParseCommand(vector<string>& args)
 		else if (Same(args[0], "inventory")) player->Inventory();
 		else if (Same(args[0], "read")) player->Read("");
 		else if (Same(args[0], "drop")) player->Drop();
+		else if (Same(args[0], "oxygen")) player->Oxygen();
 		else ret = false;
 		break;
 	}
@@ -105,7 +108,7 @@ bool World::ParseCommand(vector<string>& args)
 	//	else if (Same(args[0], "leave")) player->Leave(args);
 		else if (Same(args[0], "unlock")) player->Unlock(args[1]);
 		else if (Same(args[0], "push")) player->Push(args[1]);
-	//	else if (Same(args[0], "use")) player->Use(args);
+		else if (Same(args[0], "use")) player->Use(args[1]);
 		else if (Same(args[0], "activate")) player->Activate(args[1]);
 		else if (Same(args[0], "go")) player->Go(args[1]);
 		else ret = false;
@@ -130,6 +133,10 @@ bool World::ParseCommand(vector<string>& args)
 	}
 
 	return ret;
+}
+
+Player* World::GetMainPlayer() {
+	return player;
 }
 
 

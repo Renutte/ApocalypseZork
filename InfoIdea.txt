@@ -91,6 +91,7 @@
     B_RED_ -> Entitys
     B_BLUE_ -> Rooms
     B_GREEN_ -> Directions
+    B_GREEN_ -> Directions
 
 
 === TESTS:
@@ -129,7 +130,7 @@ directions
 go east
 explore
 
--- To the switch room
+-- Unlock safebox
 push rock
 go east
 take bkey from corpse
@@ -147,3 +148,18 @@ open odoor
 directions
 go east
 explore
+drop
+take rkey from locker
+examine locker
+unlock locker
+examine locker
+take rkey from locker
+examine locker
+
+push rock
+go east
+go west
+go east
+go west
+go east
+go west

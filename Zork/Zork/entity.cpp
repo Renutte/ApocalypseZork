@@ -30,6 +30,18 @@ Entity::~Entity()
 	
 }
 
+void Entity::ChangeNameTo(string new_name) {
+	name = new_name;
+}
+
+void Entity::ChangeDescriptionTo(string new_description) {
+	description = new_description;
+}
+
+Item* Entity::GetItemProperties() {
+	return opens;
+}
+
 void Entity::SetLockedTo(bool new_state) {
 	locked = new_state;
 }
@@ -68,18 +80,17 @@ void Entity::ChangeParentTo(Entity* new_parent)
 
 void Entity::Look(string entity_name) const
 {
+	cout << endl;
 	Entity* entity_to_look = FindChild(entity_name);
 	if (entity_to_look != NULL) entity_to_look->Look();
-	else cout << endl << "I cant look this object." << endl << endl;
-
+	else cout << "I cant look this object." << endl;
+	cout << endl;
 }
 
 void Entity::Look() const
 {
-	cout << endl;
 	cout << B_RED_ << name << RESET_ << endl;
 	cout << description << endl;
-	cout << endl;
 }
 
 Entity* Entity::FindChild(string entity_name) const {

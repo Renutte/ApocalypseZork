@@ -18,6 +18,7 @@ public:
 	World();
 	bool Tick(vector<string>& args);
 	bool ParseCommand(vector<string>& args);
+	Player* GetMainPlayer();
 
 private:
 	Player* player;
