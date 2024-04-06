@@ -54,9 +54,8 @@
             x = (North, South, East, West)
     
     == 4 Arg:
-        - Unlock x with y
+        - Unlock x
             x = (SafeBox)
-            y = (Riddle password)
 
         - Take x from y
             x = (Key, Oxygen Tank, Note)
@@ -159,6 +158,203 @@ examine locker
 push rock
 go east
 go west
+go east
+go west
+go east
+go west
+
+
+
+-------------
+
+explore
+directions
+push rock
+go east
+directions
+explore
+examine corpse
+take note from corpse
+read note
+drop
+take bkey from corpse
+go west
+open bdoor
+explore
+directions
+go south
+explore
+directions
+examine shelf
+take otank from shelf
+drop
+take otank from shelf
+use otank
+inventory
+drop
+take okey from shelf
+examine shelf
+go north
+go east
+open odoor
+drop
+explore
+directions
+go east
+explore
+directions
+examine generator
+activate generator
+examine locker
+take bkey from locker
+unlock locker
+3
+unlock locker
+4
+examine locker
+take bkey from locker
+take rkey from locker
+go west
+go north
+explore
+directions
+open rdoor
+directions
+go east
+
+----- DIED (Final room but generator not activated) -----
+
+look
+explore
+examine rock
+examine bdoor
+open bdoor
+open rock
+open a
+look rock
+push rock
+directions
+go east
+explore
+examine corpse
+take note from corpse
+read note
+take bkey from corpse
+drop
+take bkey from corpse
+directions
+directions
+go west
+open bdoor
+directions
+go south
+explore
+examine shelf
+take otank from shelf
+drop
+take otank from shelf
+use otank
+take okey from shelf
+drop
+take okey from shelf
+directions
+go north
+directions
+go east
+open odoor
+directions
+east
+go east
+explore
+examine locker
+unlock locker
+4
+examine locker
+take Rkey
+drop
+take Rkey
+take Rkey from locker
+directions
+go west
+directions
+go north
+explore
+open rdoor
+go east
+
+----- WIN -----
+
+look
+explore
+examine rock
+examine bdoor
+open bdoor
+open rock
+open a
+look rock
+push rock
+directions
+go east
+explore
+examine corpse
+take note from corpse
+read note
+take bkey from corpse
+drop
+take bkey from corpse
+directions
+directions
+go west
+open bdoor
+directions
+go south
+explore
+examine shelf
+take otank from shelf
+drop
+take otank from shelf
+use otank
+take okey from shelf
+drop
+take okey from shelf
+directions
+go north
+directions
+go east
+open odoor
+directions
+east
+go east
+explore
+activate generator
+examine locker
+unlock locker
+4
+examine locker
+take Rkey
+drop
+take Rkey
+take Rkey from locker
+directions
+go west
+directions
+go north
+explore
+open rdoor
+go east
+
+----- DIED (Normal room out of oxygen) -----
+
+look
+explore
+examine rock
+examine bdoor
+open bdoor
+open rock
+open a
+look rock
+push rock
+directions
 go east
 go west
 go east

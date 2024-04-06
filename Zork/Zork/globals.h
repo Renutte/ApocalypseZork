@@ -24,11 +24,11 @@
 #define RESET_ "\033[0m"
 
 #define EMOJI_SKULL "\xF0\x9F\x92\x80"
+#define EMOJI_TROPHY "\xF0\x9F\x8F\x86"
 
 #include <string>
 #include <list>
 #include <vector>
-#include <time.h>
 #include <Windows.h>
 
 using namespace std;

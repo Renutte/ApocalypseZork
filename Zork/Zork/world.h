@@ -6,7 +6,6 @@
 #include <string>
 #include <list>
 #include <vector>
-#include <time.h>
 
 #include "player.h"
 
@@ -19,10 +18,12 @@ public:
 	bool Tick(vector<string>& args);
 	bool ParseCommand(vector<string>& args);
 	Player* GetMainPlayer();
+	bool PlayerWin();
 
 private:
 	Player* player;
-
+	Room* finishRoom;
+	Entity* powerSource;
 };
 
 #endif

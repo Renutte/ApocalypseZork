@@ -45,7 +45,7 @@ void Player::Oxygen() {
 	cout << endl;
 	if (oxygen_remaining > 0) cout << "My oxygen levels are at " << B_YELLOW_ << oxygen_remaining << "%" << RESET_ << endl;
 	else {
-		cout << "There is no more oxygen" << endl;
+		cout << "There is no more oxygen in tank" << endl;
 		dead = true;
 	}
 	cout << endl;
@@ -59,7 +59,7 @@ void Player::Use(string object_name) {
 	cout << endl;
 	if (object_name == "") cout << "What you want to use?" << endl;
 	else {
-		if (item_in_hands == NULL) cout << "You need to hold something to use" << endl;
+		if (item_in_hands == NULL || !Same(object_name, item_in_hands->name)) cout << "You are not holding something i can use" << endl;
 		else {
 			if (item_in_hands->GetItemProperties() != NULL && item_in_hands->GetItemProperties()->oxygen_provided > 0) {
 				cout << "I refilled my oxygen with this " << B_RED_ << item_in_hands->name << RESET_ << endl;
@@ -68,9 +68,10 @@ void Player::Use(string object_name) {
 				item_in_hands->GetItemProperties()->oxygen_provided = 0;
 				item_in_hands->ChangeNameTo("Empty" + item_in_hands->name);
 				item_in_hands->ChangeDescriptionTo("A tank with 0% of Oxygen.");
+				return;
 			}
 			else {
-				cout << "I cant do anything with this " << B_RED_ << item_in_hands->name << RESET_ << endl;
+				cout << "I cant use this " << B_RED_ << item_in_hands->name << RESET_ << endl;
 			}
 		}
 	}
@@ -106,11 +107,11 @@ void Player::Open(string object_name) {
 	if (object_name == "") cout <<  "What you want to open?" << endl;
 	else {
 		Entity* entity_to_open = room->FindChild(object_name);
-		if (entity_to_open == NULL) cout << "I dont see any " << object_name << " near me" << endl;
+		if (entity_to_open == NULL) cout << "I dont see any " << B_RED_ << object_name << RESET_ << " near me" << endl;
 		else {
 			Item* item_that_opens = entity_to_open->opens;
-			if (item_in_hands != NULL) {
-				if (item_that_opens != NULL) {
+			if (item_that_opens != NULL) {
+				if (item_in_hands != NULL) {
 					if (item_in_hands == item_that_opens) {
 						room->UnlockExit(entity_to_open);
 						entity_to_open->ChangeParentTo(NULL);
@@ -120,8 +121,11 @@ void Player::Open(string object_name) {
 					else cout << "The " << B_RED_ << entity_to_open->name << RESET_ << " dosent open with " << B_RED_ << item_in_hands->name << RESET_ << endl;
 				}
 				else {
-					cout << "I cant open this" << endl;
+					cout << "I need something to open this" << endl;
 				}
+			}
+			else {
+				cout << "It is not a thing that i can open" << endl;
 			}
 		}
 	}

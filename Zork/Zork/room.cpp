@@ -18,6 +18,7 @@ Exit* Room::GetExit(Direction direction) {
 	else if (direction == EAST) return east_exit;
 	else if (direction == WEST) return west_exit;
 	else if (direction == NORTH) return north_exit;
+	return NULL;
 }
 
 //Exit Room::GetExitInfo(Direction direction) {

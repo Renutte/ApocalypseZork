@@ -6,7 +6,6 @@
 #include <string>
 #include <list>
 #include <vector>
-#include <time.h>
 
 #include "entity.h"
 #include "exit.h"

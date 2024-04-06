@@ -16,7 +16,8 @@ World::World()
 		Room* oxygen_store = new Room("Oxygen store", "A room plenty of different equipments.");
 		Room* switch_room = new Room("Switch room", "A room with a lot of cables and electric things.");
 		Room* vault_entrance = new Room("Vault entrance", "There is a giant vault entrance.");
-		Room* vault = new Room("Vault", "Finally a room where i can breath and drink water.");
+		Room* vault = new Room("Vault", "Finally, a source of drinkable water.");
+		finishRoom = vault;
 
 	// === ENTITYS
 		// == Entrance
@@ -35,6 +36,7 @@ World::World()
 		// == Switch Room
 		Entity* generator = new Entity("Generator", "A generator with a switch i can activate, seems important to light all on.", switch_room, true);
 		generator->SetActivateable(true, false);
+		powerSource = generator;
 		Entity* locker = new Entity("Locker", "A locked locker, i need a number combination. I see through the glass a Red Key.", switch_room, true);
 		locker->SetUnlockable(true, true, "4");
 		Item* red_key = new Item("RKey", "Red Key.", locker);
@@ -139,4 +141,10 @@ Player* World::GetMainPlayer() {
 	return player;
 }
 
-
+bool World::PlayerWin() {
+	if (player->room == finishRoom) {
+		if (powerSource->activated) return true;
+		else cout << "You forgot to activate the generator that provides the oxygen purifier." << endl << endl;
+	}
+	return false;
+}
