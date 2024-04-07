@@ -78,12 +78,6 @@ bool World::Tick(vector<string>& args)
 bool World::ParseCommand(vector<string>& args)
 {
 
-	/*cout << "--- World::ParseCommand" << endl;
-	cout << "Args size: " << args.size() << endl;*/
-	//for (const string& arg : args) {
-	//	cout << arg << endl;
-	//}
-
 	bool ret = true;
 
 	switch (args.size())
@@ -107,7 +101,6 @@ bool World::ParseCommand(vector<string>& args)
 		else if (Same(args[0], "take")) player->Take(args[1]);
 		else if (Same(args[0], "open")) player->Open(args[1]);
 		else if (Same(args[0], "read")) player->Read(args[1]);
-	//	else if (Same(args[0], "leave")) player->Leave(args);
 		else if (Same(args[0], "unlock")) player->Unlock(args[1]);
 		else if (Same(args[0], "push")) player->Push(args[1]);
 		else if (Same(args[0], "use")) player->Use(args[1]);
@@ -143,7 +136,10 @@ Player* World::GetMainPlayer() {
 
 bool World::PlayerWin() {
 	if (player->room == finishRoom) {
-		if (powerSource->activated) return true;
+		if (powerSource->activated) { 
+			cout << "I can breath without any tank of oxygen, the generator is purifying the air of this room." << endl << endl;
+			return true;
+		}
 		else cout << "You forgot to activate the generator that provides the oxygen purifier." << endl << endl;
 	}
 	return false;

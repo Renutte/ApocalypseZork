@@ -174,6 +174,7 @@ void Player::Unlock(string object_name) {
 					cout << "Type code: ";
 					string player_input;
 					getline(cin, player_input);
+					//all_inputs.push_back(player_input);
 					if (Same(player_input, entity_to_unlock->password)) {
 						entity_to_unlock->SetLockedTo(false);
 						cout << "The password is correct! " << B_RED_ << entity_to_unlock->name << RESET_ << " is now unlocked." << endl;
