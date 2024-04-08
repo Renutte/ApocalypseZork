@@ -4,10 +4,10 @@ Hey! This is a small text-based adventure game project inspired by the original 
 It runs in the terminal, you must input instructions that the game can process. 
 Use your imagination!😊
 
-> **Languaje:** C++
-> **IDE:** Microsoft Visual Studio Community 2019 Versión 16.11.34
-> [Github repository](https://github.com/Renutte/ApocalypseZork/tree/main)
-> [VS Solution](https://github.com/Renutte/ApocalypseZork/blob/main/Zork/Zork.sln)
+> **Languaje:** C++<br>
+> **IDE:** Microsoft Visual Studio Community 2019 Versión 16.11.34<br>
+> [Github repository](https://github.com/Renutte/ApocalypseZork/tree/main)<br>
+> [VS Solution](https://github.com/Renutte/ApocalypseZork/blob/main/Zork/Zork.sln)<br>
  
 Author: *Daniel Zimmermann García*
 
@@ -62,7 +62,7 @@ The following list outlines the inputs that the game can recognize:
 
 ## Map
 Try to solve it without looking at the map! 😡
-![Ejemplo de imagen](https://raw.githubusercontent.com/Renutte/ApocalypseZork/main/MapIdea.png)
+![Ejemplo de imagen](https://github.com/Renutte/ApocalypseZork/blob/d953f1a98be9a5a316869cf57b46a294130ab339/Map.png)
 
 # MIT License
 
