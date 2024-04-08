@@ -7,22 +7,21 @@ Use your imagination!😊
 > **Languaje:** C++<br>
 > **IDE:** Microsoft Visual Studio Community 2019 Versión 16.11.34<br>
 > [Github repository](https://github.com/Renutte/ApocalypseZork/tree/main)<br>
-> [VS Solution](https://github.com/Renutte/ApocalypseZork/blob/main/Zork/Zork.sln)<br>
  
 Author: *Daniel Zimmermann García*
 
 # Guide
 ## Execution
 
-To start the game, simply download the release and run the ".exe" file.
-Alternatively, you can download the source code and compile it using Visual Studio (VS).
+To start the game, simply [download](https://github.com/Renutte/ApocalypseZork/releases/tag/ApocalypseZork) the release and run the ".exe" file. <br>
+Alternatively, you can [download](https://github.com/Renutte/ApocalypseZork/releases/tag/ApocalypseZork) the source code and compile it using Visual Studio (VS).
 
 ## History context
-You are wandering through a wasteland, thirsty and with low oxygen levels...
-Your objective is to find a source of water.
-In the distance, you spot a cave and decide to enter.
-Inside the cave, you discover an abandoned settlement.
-You decide to explore and see if you find anything interesting.
+You are wandering through a wasteland, thirsty and with low oxygen levels...<br>
+Your objective is to find a source of water.<br>
+In the distance, you spot a cave and decide to enter.<br>
+Inside the cave, you discover an abandoned settlement.<br>
+You decide to explore and see if you find anything interesting.<br>
 > **Note:** You can't move too much! The oxygen depletes each time you move.
 
 ## Color guide

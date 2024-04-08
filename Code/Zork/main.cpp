@@ -15,21 +15,21 @@ int main()
     SetConsoleOutputCP(CP_UTF8);
 
     // == Text colors
-    cout << RED_ << "Red" << RESET_ << " || ";
-    cout << GREEN_ << "Green" << RESET_ << " || ";
-    cout << YELLOW_ << "Yellow" << RESET_ << " || ";
-    cout << BLUE_ << "Blue" << RESET_ << " || ";
-    cout << MAGENTA_ << "Magenta" << RESET_ << " || ";
-    cout << CYAN_ << "Cyan" << RESET_ << " || ";
-    cout << WHITE_ << "White" << RESET_ << " || ";
-    cout << B_BLACK_ << "Bright Black" << RESET_ << " || ";
-    cout << B_RED_ << "Bright Red" << RESET_ << " || ";
-    cout << B_GREEN_ << "Bright Green" << RESET_ << " || ";
-    cout << B_YELLOW_ << "Bright Yellow" << RESET_ << " || ";
-    cout << B_BLUE_ << "Bright Blue" << RESET_ << " || ";
-    cout << B_MAGENTA_ << "Bright Magenta" << RESET_ << " || ";
-    cout << B_CYAN_ << "Bright Cyan" << RESET_ << " || ";
-    cout << B_WHITE_ << "Bright White" << RESET_ << endl;
+    //cout << RED_ << "Red" << RESET_ << " || ";
+    //cout << GREEN_ << "Green" << RESET_ << " || ";
+    //cout << YELLOW_ << "Yellow" << RESET_ << " || ";
+    //cout << BLUE_ << "Blue" << RESET_ << " || ";
+    //cout << MAGENTA_ << "Magenta" << RESET_ << " || ";
+    //cout << CYAN_ << "Cyan" << RESET_ << " || ";
+    //cout << WHITE_ << "White" << RESET_ << " || ";
+    //cout << B_BLACK_ << "Bright Black" << RESET_ << " || ";
+    //cout << B_RED_ << "Bright Red" << RESET_ << " || ";
+    //cout << B_GREEN_ << "Bright Green" << RESET_ << " || ";
+    //cout << B_YELLOW_ << "Bright Yellow" << RESET_ << " || ";
+    //cout << B_BLUE_ << "Bright Blue" << RESET_ << " || ";
+    //cout << B_MAGENTA_ << "Bright Magenta" << RESET_ << " || ";
+    //cout << B_CYAN_ << "Bright Cyan" << RESET_ << " || ";
+    //cout << B_WHITE_ << "Bright White" << RESET_ << endl;
 
     // == Title
     cout << B_WHITE_;
