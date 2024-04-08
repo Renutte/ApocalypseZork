@@ -84,3 +84,35 @@ string ConcatenateArgs(const vector<string>& args, size_t startIdx) {
 	}
 	return concatenated;
 }
+
+
+string combineValues(const vector<string>& args, const string& startString, const string& endString) {
+	size_t startIndex = 0;
+	size_t endIndex = args.size();
+
+	// Start index
+	if (!startString.empty()) {
+		vector<string>::const_iterator startIt = find_if(args.begin(), args.end(), [&](const string& s) {
+			return Same(s, startString);
+			});
+		if (startIt != args.end()) startIndex = distance(args.begin(), startIt) + 1;
+		else return "";
+	}
+
+	// Finish index
+	if (!endString.empty()) {
+		vector<string>::const_iterator endIt = find_if(args.begin() + startIndex, args.end(), [&](const string& s) {
+			return Same(s, endString);
+			});
+		if (endIt != args.end()) endIndex = distance(args.begin(), endIt);
+		else return "";
+	}
+
+	// Combine values between
+	string combinedValue;
+	for (size_t i = startIndex; i < endIndex; ++i) {
+		combinedValue += args[i];
+		if (i != endIndex - 1) combinedValue += " ";
+	}
+	return combinedValue;
+}

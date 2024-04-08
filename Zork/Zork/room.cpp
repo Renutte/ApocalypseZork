@@ -51,17 +51,21 @@ void Room::RemoveObstruction(Direction direction) {
 
 void LookExit(Exit* aux_exit) {
 	if (aux_exit != NULL)
-		if (aux_exit->obstruction_object == NULL) cout << "Seems i can go to the " << B_GREEN_ << directionToString(aux_exit->direction) << RESET_ << endl;
-		else cout << "Seems i can go to the " << B_GREEN_ << directionToString(aux_exit->direction) << RESET_ << ", but its obstructed by " << B_RED_ << aux_exit->obstruction_object->name << RESET_ << endl;
+		if (aux_exit->obstruction_object == NULL) { 
+			if (aux_exit->destination != NULL && aux_exit->destination->visited) cout << "Seems you can go to the " << B_GREEN_ << directionToString(aux_exit->direction) << RESET_ << ", to the " << B_BLUE_ << aux_exit->destination->name << RESET_ << endl;
+			else cout << "Seems you can go to the " << B_GREEN_ << directionToString(aux_exit->direction) << RESET_ << ""<< endl;
+		}
+		else cout << "Seems you can go to the " << B_GREEN_ << directionToString(aux_exit->direction) << RESET_ << ", but its obstructed by " << B_RED_ << aux_exit->obstruction_object->name << RESET_ << endl;
 }
 
-void Room::Look() const
+void Room::Look()
 {
 	cout << "You are now in the " << B_BLUE_ << name << RESET_ << endl;
 	cout << description << endl;
+	visited = true;
 }
 
-void Room::Directions() const {
+void Room::Directions() {
 	cout << endl;
 	LookExit(south_exit);
 	LookExit(north_exit);

@@ -26,7 +26,7 @@ public:
 	void Examine() const;
 	Entity* FindChild(string entity_name) const;
 	void Look(string entity_name) const;
-	void SetPushable(bool pushable);
+	void SetPushable(bool pushable, string pushed_description);
 	void SetReadable(bool readable, string read_text);
 	void SetActiveTo(bool activation);
 	void SetActivateable(bool activetable, bool default_state);
@@ -47,6 +47,7 @@ public:
 public:
 	// Is a movable object (Rock)
 	bool can_push;
+	string text_when_pushed;
 	// Is a readable object (Note)
 	bool can_read;
 	string read_description;

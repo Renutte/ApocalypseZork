@@ -52,8 +52,9 @@ void Entity::SetUnlockable(bool unlockable, bool is_locked, string password_to_s
 }
 
 // Pushable entities disappear when pushed
-void Entity::SetPushable(bool pushable) {
+void Entity::SetPushable(bool pushable, string pushed_description) {
 	can_push = pushable;
+	text_when_pushed = pushed_description;
 }
 
 void Entity::SetReadable(bool readable, string read_text) {
@@ -89,7 +90,7 @@ void Entity::Look(string entity_name) const
 
 void Entity::Look() const
 {
-	cout << B_RED_ << name << RESET_ << endl;
+	//cout << B_RED_ << name << RESET_ << endl;
 	cout << description << endl;
 }
 
@@ -101,26 +102,29 @@ Entity* Entity::FindChild(string entity_name) const {
 }
 
 void Entity::Examine(string entity_name) const {
+	cout << endl;
 	if (entity_name == "") cout << "What you want to examine?" << endl;
 	else {
 		Entity* entity_to_examine = FindChild(entity_name);
-		if (entity_to_examine == NULL) cout << endl << "I dont see any " << B_RED_ << entity_name << RESET_ << " near me" << endl << endl;
-		else if (entity_to_examine->can_unlock && entity_to_examine->locked) cout << endl << B_RED_ << entity_to_examine->name << RESET_ << " is locked, you cant examine this." << endl << endl;
+		if (entity_to_examine == NULL) cout << "I dont see any " << B_RED_ << entity_name << RESET_ << " near me" << endl;
+		else if (entity_to_examine->can_unlock && entity_to_examine->locked) cout << B_RED_ << entity_to_examine->name << RESET_ << " is locked, you cant examine this." << endl;
 		else entity_to_examine->Examine();
 	}
+	cout << endl;
 }
 
 void Entity::Examine() const {
-	cout << endl;
-
 	list<string> visibleItems;
 	for (auto& entity : container) {
 		if (entity->visible) visibleItems.push_back(entity->name); 
 	}
 	
-	if (visibleItems.empty()) cout << "Nothing interesting in " << B_RED_ << name << RESET_ << endl; 
+	if (visibleItems.empty()) {
+		if (parent == NULL) cout << "Nothing interesting in " << B_BLUE_ << name << RESET_ << endl;
+		else cout << "Nothing interesting in " << B_RED_ << name << RESET_ << endl;
+	}
 	else {
-		cout << "This " << B_BLUE_ << name << RESET_ << " contains: ";
+		cout << "This " << B_BLUE_ << name << RESET_ << " contains a ";
 		auto it = visibleItems.begin();
 		while (true) {
 			cout << B_RED_ << *it << RESET_;
@@ -128,7 +132,7 @@ void Entity::Examine() const {
 				break;
 			}
 			else if (next(it) == visibleItems.end()) {
-				cout << " and ";
+				cout << " and a ";
 			}
 			else {
 				cout << ", ";
@@ -136,5 +140,4 @@ void Entity::Examine() const {
 		}
 		cout << "." << endl;
 	}
-	cout << endl;
 }

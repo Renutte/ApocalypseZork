@@ -31,7 +31,9 @@ void Player::Directions() const
 
 void Player::Examine() const
 {
+	cout << endl;
 	room->Examine();
+	cout << endl;
 }
 
 void Player::SetRemainingOxygen(int new_oxygen) {
@@ -43,7 +45,7 @@ void Player::SetOxygenLoosedPerMovement(int new_oxygen) {
 
 void Player::Oxygen() {
 	cout << endl;
-	if (oxygen_remaining > 0) cout << "My oxygen levels are at " << B_YELLOW_ << oxygen_remaining << "%" << RESET_ << endl;
+	if (oxygen_remaining > 0) cout << "The oxygen levels in tank are at " << B_YELLOW_ << oxygen_remaining << "%" << RESET_ << endl;
 	else {
 		cout << "There is no more oxygen in tank" << endl;
 		dead = true;
@@ -66,7 +68,7 @@ void Player::Use(string object_name) {
 				SetRemainingOxygen(item_in_hands->GetItemProperties()->oxygen_provided + oxygen_remaining);
 				Oxygen();
 				item_in_hands->GetItemProperties()->oxygen_provided = 0;
-				item_in_hands->ChangeNameTo("Empty" + item_in_hands->name);
+				item_in_hands->ChangeNameTo("Empty " + item_in_hands->name);
 				item_in_hands->ChangeDescriptionTo("A tank with 0% of Oxygen.");
 				return;
 			}
@@ -76,6 +78,12 @@ void Player::Use(string object_name) {
 		}
 	}
 	cout << endl;
+}
+
+void Player::PrintRoomInfo() {
+	cout << endl;
+	room->Look();
+	Oxygen();
 }
 
 void Player::Go(string direction_name) {
@@ -107,7 +115,7 @@ void Player::Open(string object_name) {
 	if (object_name == "") cout <<  "What you want to open?" << endl;
 	else {
 		Entity* entity_to_open = room->FindChild(object_name);
-		if (entity_to_open == NULL) cout << "I dont see any " << B_RED_ << object_name << RESET_ << " near me" << endl;
+		if (entity_to_open == NULL) cout << "You dont see any " << B_RED_ << object_name << RESET_ << " near You" << endl;
 		else {
 			Item* item_that_opens = entity_to_open->opens;
 			if (item_that_opens != NULL) {
@@ -115,17 +123,17 @@ void Player::Open(string object_name) {
 					if (item_in_hands == item_that_opens) {
 						room->UnlockExit(entity_to_open);
 						entity_to_open->ChangeParentTo(NULL);
-						cout << "The " << B_RED_ << entity_to_open->name << RESET_ << " has been opened. I have a new way now." << endl;
+						cout << "The " << B_RED_ << entity_to_open->name << RESET_ << " has been opened. You have a new way now." << endl;
 						delete entity_to_open;
 					}
 					else cout << "The " << B_RED_ << entity_to_open->name << RESET_ << " dosent open with " << B_RED_ << item_in_hands->name << RESET_ << endl;
 				}
 				else {
-					cout << "I need something to open this" << endl;
+					cout << "You need something to open this" << endl;
 				}
 			}
 			else {
-				cout << "It is not a thing that i can open" << endl;
+				cout << "It is not a thing that you can open" << endl;
 			}
 		}
 	}
@@ -137,8 +145,8 @@ void Player::Activate(string object_name) {
 	if (object_name == "") cout << "What you want to activate?" << endl;
 	else {
 		Entity* entity_to_activate = room->FindChild(object_name);
-		if (entity_to_activate == NULL) cout << "I dont see any " << B_RED_ << object_name << RESET_ << " near me" << endl;
-		else if (entity_to_activate->can_activate == false) cout << "I cant activate the " << entity_to_activate->name << endl;
+		if (entity_to_activate == NULL) cout << "You dont see any " << B_RED_ << object_name << RESET_ << " near you" << endl;
+		else if (entity_to_activate->can_activate == false) cout << "You cant activate the " << entity_to_activate->name << endl;
 		else {
 			if (entity_to_activate->activated) cout << entity_to_activate->name << RESET_ << " already activated." << endl;
 			else {
@@ -152,15 +160,20 @@ void Player::Activate(string object_name) {
 
 void Player::Read(string object_name) {
 	cout << endl;
-	if (object_name == "") cout << "What you want to read?" << endl;
+	Entity* entity_to_read = room->FindChild(object_name);
+	if (item_in_hands != nullptr && (object_name.empty() || Same(item_in_hands->name, object_name))) entity_to_read = item_in_hands;
+	if (entity_to_read == nullptr) {
+		if (object_name.empty()) cout << "What do you want to read?" << endl;
+		else cout << "You don't have any readable " << B_RED_ << object_name << RESET_ << " near you" << endl;
+	}
 	else {
-		Entity* entity_to_read = room->FindChild(object_name);
-		if (item_in_hands != NULL && item_in_hands->can_read && (object_name == "" || Same(item_in_hands->name, object_name))) entity_to_read = item_in_hands;
-		if (entity_to_read == NULL) cout << "This object have not text i can read." << endl;
+		if (!entity_to_read->can_read) cout << "This " << B_RED_ << entity_to_read->name << RESET_ << " does not have readable text." << endl;
 		else cout << entity_to_read->read_description << endl;
 	}
+
 	cout << endl;
 }
+
 
 void Player::Unlock(string object_name) {
 	cout << endl;
@@ -200,7 +213,7 @@ void Player::Push(string object_name) {
 				if (item_in_hands == NULL) {
 					room->UnlockExit(entity_to_push);
 					entity_to_push->ChangeParentTo(NULL);
-					cout << "The " << B_RED_ << entity_to_push->name << RESET_ << " has been pushed. I have a new way now." << endl;
+					cout << entity_to_push->text_when_pushed << endl;
 					delete entity_to_push;
 				}
 				else cout << "I cant push with objects in hands. " << endl;
@@ -217,7 +230,7 @@ void Player::Take(string object_name) {
 	cout << endl;
 	if (object_name == "") cout << "What you want to take?" << endl;
 	else {
-		if (item_in_hands != NULL) cout << "You are already holding: " << B_RED_ << item_in_hands->name << RESET_ << endl;
+		if (item_in_hands != NULL) cout << "Your hands are already as full as they can be, already holding a " << B_RED_ << item_in_hands->name << RESET_ << endl;
 		else {
 			Entity* object_to_take = room->FindChild(object_name);
 			if (object_to_take == NULL) cout << "I dont see any " << B_RED_ << object_name << RESET_ << " near me" << endl;
@@ -225,7 +238,7 @@ void Player::Take(string object_name) {
 			else {
 				item_in_hands = object_to_take;
 				item_in_hands->ChangeParentTo(this);
-				cout << "You picked up: " << B_RED_ << item_in_hands->name << RESET_ << endl;
+				cout << "You picked up the " << B_RED_ << item_in_hands->name << RESET_ << endl;
 			}
 		}
 	}
@@ -234,19 +247,19 @@ void Player::Take(string object_name) {
 
 void Player::Take(string object_name, string from_object_name) {
 	cout << endl;
-	if (item_in_hands != NULL) cout << "You are already holding: " << B_RED_ << item_in_hands->name << RESET_ << endl;
+	if (item_in_hands != NULL) cout << "Your hands are already as full as they can be, already holding a " << B_RED_ << item_in_hands->name << RESET_ << endl;
 	else {
 		Entity* from_object = room->FindChild(from_object_name);
-		if (from_object == NULL) cout << "I dont see any " << B_RED_ << from_object_name << RESET_ << " near me" << endl;
+		if (from_object == NULL) cout << "You dont see any " << B_RED_ << from_object_name << RESET_ << " near you" << endl;
 		else {
 			if (from_object->can_unlock && from_object->locked) cout << B_RED_ << from_object->name << RESET_ << " is locked, you cant pick anything inside." << endl;
 			else {
 				Entity* object_to_take = from_object->FindChild(object_name);
-				if (object_to_take == NULL) cout << "I dont see any " << B_RED_ << object_name << RESET_ << " in " << B_RED_ << from_object->name << RESET_ << endl;
+				if (object_to_take == NULL) cout << "You dont see any " << B_RED_ << object_name << RESET_ << " in " << B_RED_ << from_object->name << RESET_ << endl;
 				else {
 					item_in_hands = object_to_take;
 					item_in_hands->ChangeParentTo(this);
-					cout << "You picked up: " << B_RED_ << item_in_hands->name << RESET_ << endl;
+					cout << "You picked up the " << B_RED_ << item_in_hands->name << RESET_ << endl;
 				}
 			}
 		}
@@ -255,13 +268,16 @@ void Player::Take(string object_name, string from_object_name) {
 }
 
 
-void Player::Drop() {
+void Player::Drop(string object_name) {
 	cout << endl;
 	if (item_in_hands == NULL) cout << "You are not holding anything." << endl;
 	else {
-		cout << "You dropped: " << B_RED_ << item_in_hands->name << RESET_ << endl;
-		item_in_hands->ChangeParentTo(room);
-		item_in_hands = NULL;
+		if (object_name == "" || Same(object_name, item_in_hands->name)) {
+			cout << "You dropped the " << B_RED_ << item_in_hands->name << RESET_ << endl;
+			item_in_hands->ChangeParentTo(room);
+			item_in_hands = NULL;
+		}
+		else cout << "You are not holding any " << B_RED_ << object_name << RESET_ << endl;
 	}
 	cout << endl;
 }
@@ -270,7 +286,7 @@ void Player::Inventory() {
 	cout << endl;
 	if (item_in_hands == NULL) cout << "You are not holding anything." << endl;
 	else {
-		cout << "You are holding: " << B_RED_ << item_in_hands->name << RESET_ << endl;
+		cout << "You are holding a " << B_RED_ << item_in_hands->name << RESET_ << endl;
 		cout << item_in_hands->description << endl;
 	}
 	cout << endl;

@@ -32,6 +32,7 @@ int main()
     cout << B_WHITE_ << "Bright White" << RESET_ << endl;
 
     // == Title
+    cout << B_WHITE_;
     cout << endl;
     cout << " _____                 _                    _____         _   " << endl;
     cout << "|  _  |___ ___ ___ ___| |_ _ ___ ___ ___   |__   |___ ___| |_ " << endl;
@@ -41,6 +42,17 @@ int main()
     cout << endl;
     cout << "By: Daniel Z." << endl;
     cout << endl;
+    cout << RESET_;
+
+    // == Lore
+    //cout << B_WHITE_;
+    cout << "You are wandering through a wasteland, thirsty and with low oxygen levels..." << endl;
+    cout << "Your objective is to find a source of water." << endl;
+    cout << "In the distance, you spot a cave and decide to enter." << endl;
+    cout << "Inside the cave, you discover an abandoned settlement." << endl;
+    cout << "You decide to explore and see if you find anything interesting." << endl;
+
+    //cout << RESET_;
 
     // == Runtime
     string player_input;
@@ -49,7 +61,10 @@ int main()
     vector<string> all_inputs;
     
     World world;
+    bool restart_game = true;
 
+    world.player->PrintRoomInfo();
+    
     while (true) {
         if (world.PlayerWin()) {
             cout << EMOJI_TROPHY << " YOU WON " << EMOJI_TROPHY << endl;
@@ -60,27 +75,41 @@ int main()
             cout << EMOJI_SKULL << " YOU DIED " << EMOJI_SKULL << endl;
             break;
         }
+        cout << B_BLACK_;
         cout << "> ";
         getline(cin, player_input);
+        cout << RESET_;
         all_inputs.push_back(player_input);
         Tokenize(player_input, args);
         if (args.size() > 0 && Same(args[0], "quit")) break;
-        if (world.Tick(args) == false) cout << endl << "I donk understand you, what you want i do?" << endl << endl;
+        world.ProcessInput(args);
         args.clear();
     }
 
+    // == Check stats
     cout << "You want to know your stats? (Y/N)" << endl;
     cout << endl;
     cout << "> ";
     getline(cin, player_input);
     if (Same(player_input, "Y") || Same(player_input, "Yes")) {
-        cout << endl << "Comands ammount used: " << all_inputs.size() << endl;
+        cout << endl << "Commands amount used: " << all_inputs.size() << endl;
         cout << endl << "All inputs:" << endl;
         for (const string& input : all_inputs) {
             cout << input << endl;
         }
     }
 
+    //// == Restart game
+    //cout << endl << "You want to restart the game? (Y/N)" << endl;
+    //cout << endl;
+    //cout << "> ";
+    //getline(cin, player_input);
+    //if (Same(player_input, "Y") || Same(player_input, "Yes")) {
+    //    main();
+    //    all_inputs.clear();
+    //}
+
+    // == Final text
     cout << endl << "Thanks for playing :)" << endl;
     return 0;
 }

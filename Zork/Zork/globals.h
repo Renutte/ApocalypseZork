@@ -50,5 +50,6 @@ int Roll(int min, int max);
 void Tokenize(const string& line, vector<string>& arguments);
 string ConcatenateArgs(const vector<string>& args, size_t startIdx);
 Direction stringToDirection(const string& str);
+string combineValues(const vector<string>& args, const string& startString, const string& endString);
 
 #endif

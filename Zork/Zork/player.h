@@ -24,7 +24,7 @@ public:
 	void Directions() const;
 	void Take(string object_name);
 	void Open(string object_name);
-	void Drop();
+	void Drop(string object_name);
 	void Inventory();
 	void Take(string object_name, string from_object_name);
 	void Push(string object_name);
@@ -34,6 +34,7 @@ public:
 	void Use(string object_name);
 	void SetRemainingOxygen(int new_oxygen);
 	void SetOxygenLoosedPerMovement(int new_oxygen);
+	void PrintRoomInfo();
 
 public:
 	Room* room;

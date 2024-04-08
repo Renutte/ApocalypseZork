@@ -15,12 +15,11 @@ class World
 {
 public:
 	World();
-	bool Tick(vector<string>& args);
-	bool ParseCommand(vector<string>& args);
+	void ProcessInput(vector<string>& args);
 	Player* GetMainPlayer();
 	bool PlayerWin();
 
-private:
+public:
 	Player* player;
 	Room* finishRoom;
 	Entity* powerSource;
