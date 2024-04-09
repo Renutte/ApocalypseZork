@@ -11,21 +11,24 @@ Use your imagination!😊
 Author: *Daniel Zimmermann García*
 
 # Guide
-## Execution
+## Download and execution
 
-To start the game, simply [download](https://github.com/Renutte/ApocalypseZork/releases/tag/ApocalypseZork) the release and run the ".exe" file. <br>
-Alternatively, you can [download](https://github.com/Renutte/ApocalypseZork/releases/tag/ApocalypseZork) the source code and compile it using Visual Studio (VS).
+To start the game, simply download [here](https://github.com/Renutte/ApocalypseZork/releases/tag/ApocalypseZork) the release and run the ".exe" file. <br>
+Alternatively, you can download the [source code](https://github.com/Renutte/ApocalypseZork/releases/tag/ApocalypseZork) and compile it using Visual Studio (VS).
 
 ## History context
-You are wandering through a wasteland, thirsty and with low oxygen levels...<br>
+
+It is the year 2023. After a nuclear and biological war, the air has become unbreathable.<br>
+You find yourself wandering through a desolate wasteland, thirsty and with your oxygen tank running low.<br>
 Your objective is to find a source of water.<br>
-In the distance, you spot a cave and decide to enter.<br>
-Inside the cave, you discover an abandoned settlement.<br>
-You decide to explore and see if you find anything interesting.<br>
+In the distance, you spot a cave and decide to venture inside.<br>
+As you explore, you discover an abandoned settlement and decide to check it out, hoping to find water.<br>
+
+⚠️WARNING: Movement consumes oxygen, don't waste it by exploring unnecessarily.<br>
 > **Note:** You can't move too much! The oxygen depletes each time you move.
 
 ## Color guide
-The game uses colors to distinguish elements, you can see these colors represented on the map too.
+The game uses colors in the responses to differentiate between elements.
 
 |                |Reference to:                 |
 |----------------|------------------------------|

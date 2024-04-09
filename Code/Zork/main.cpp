@@ -32,27 +32,32 @@ int main()
     //cout << B_WHITE_ << "Bright White" << RESET_ << endl;
 
     // == Title
-    cout << B_WHITE_;
+    cout << B_RED_;
     cout << endl;
     cout << " _____                 _                    _____         _   " << endl;
     cout << "|  _  |___ ___ ___ ___| |_ _ ___ ___ ___   |__   |___ ___| |_ " << endl;
     cout << "|     | . | . |  _| .'| | | | . |_ -| -_|  |   __| . |  _| '_|" << endl;
     cout << "|__|__|  _|___|___|__,|_|_  |  _|___|___|  |_____|___|_| |_,_|" << endl;
     cout << "      |_|               |___|_|                               " << endl;
+    cout << RESET_;
+    cout << B_WHITE_;
     cout << endl;
     cout << "By: Daniel Z." << endl;
+    cout << endl << "______________________________________________________________" << endl;
     cout << endl;
     cout << RESET_;
 
     // == Lore
-    //cout << B_WHITE_;
-    cout << "You are wandering through a wasteland, thirsty and with low oxygen levels..." << endl;
+    cout << B_BLACK_ "INTRODUCTION: " RESET_ << endl << endl;
+    cout << "It is the year 2023. After a nuclear and biological war, the air has become unbreathable." << endl;
+    cout << "You find yourself wandering through a desolate wasteland, thirsty and with your oxygen tank running low." << endl;
     cout << "Your objective is to find a source of water." << endl;
-    cout << "In the distance, you spot a cave and decide to enter." << endl;
-    cout << "Inside the cave, you discover an abandoned settlement." << endl;
-    cout << "You decide to explore cautiously to conserve oxygen." << endl;
-    cout << "Remember, if you wander aimlessly, your oxygen will deplete rapidly." << endl;
-    cout << "Stick to safe paths and make strategic choices to preserve your resources." << endl;
+    cout << "In the distance, you spot a cave and decide to venture inside." << endl;
+    cout << "As you explore, you discover an abandoned settlement and decide to check it out, hoping to find water." << endl;
+    cout << endl;
+    cout << B_YELLOW_ "WARNING: " B_BLACK_;
+    cout << "Movement consumes oxygen, don't waste it by exploring unnecessarily." << endl;
+    cout << RESET_;
 
     //cout << RESET_;
 

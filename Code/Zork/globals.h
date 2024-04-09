@@ -28,6 +28,7 @@
 
 #define EMOJI_SKULL "\xF0\x9F\x92\x80"
 #define EMOJI_TROPHY "\xF0\x9F\x8F\x86"
+#define EMOJI_DANGER "\xE2\x9A\xA0"
 
 #include <string>
 #include <list>
