@@ -21,6 +21,9 @@
 #define B_CYAN_ "\033[1;36m"
 #define B_WHITE_ "\033[1;37m"
 
+#define STRIKETHROUGH_ "\033[9m"
+#define NO_STRIKETHROUGH_ "\033[29m"
+
 #define RESET_ "\033[0m"
 
 #define EMOJI_SKULL "\xF0\x9F\x92\x80"

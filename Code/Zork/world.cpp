@@ -11,56 +11,58 @@ World::World()
 {
 
 	// === ROOMS
-		Room* entrance = new Room("Entrance", "A place plenty of dust, seems like no one's been here for a long time.");
-		Room* main_room = new Room("Main room", "The main linving room, smells bad.");
-		Room* oxygen_store = new Room("Oxygen store", "The room feels small and cramped. \nFull of different kinds of equipment and contraptions, bits and pieces, pipes and leaks. \nIn the center of the room is a big table. \nThere is so much clutter on it you can barely make out any of it. \nYou have never seen some of this equipment before in your life. \nSome of it looks homemade, some of it looks military in nature.");
-		Room* switch_room = new Room("Switch room", "A room with a lot of cables and electric things.");
-		Room* vault_entrance = new Room("Vault entrance", "There is a giant vault entrance.");
+		Room* entrance = new Room("Entrance", "A place filled with dust, it seems like no one has been here for a long time.\nVegetation is invading this space.");
+		Room* main_room = new Room("Main room", "The main linving room, smells bad. \nThere is blood on the walls, it seems that there has been a massacre.");
+		Room* oxygen_store = new Room("Oxygen Store", "The room feels small and cramped. \nFull of different kinds of equipment, most of them deteriorated.");
+		Room* switch_room = new Room("Switch room", "A room with a lot of cables and electric things. \nIt seems that this location supplies electricity to the rooms.");
+		Room* vault_entrance = new Room("Vault entrance", "A site with nothing but a large round " B_RED_ "Red Door" RESET_ " that appears to be the entrance to a vault.");
 		Room* vault = new Room("Vault", "Finally, a source of drinkable water.");
 		finishRoom = vault;
 
 	// === ENTITYS
 		// == Entrance
-		Entity* rock = new Entity("Rock", "The " B_RED_ "Rock" RESET_ " looks heavy, but unstable. \nIt's sitting against a cracked part of the wall, maybe I can push it and find a new way.", entrance, true);
-		rock->SetPushable(true, "You push the " B_RED_ "Rock" RESET_ ", making it move a little. \nYou push it a second time, throwing your entire body towards it to make it budge, and the rock falls over. \nRevealing an opening in the wall.");
+		Entity* rock = new Entity("Rock", "The " B_RED_ "Rock" RESET_ " looks heavy, but unstable. \nIt's sitting against a cracked part of the wall, maybe you can push it and find a new way.", entrance, true);
+		rock->SetPushable(true, "You push the " B_RED_ "Rock" RESET_ ", causing it to shift slightly. \nPushing it a second time, you throw your entire body into it to make it budge, and the rock falls over. \nRevealing an opening in the wall.");
 		// == Main Room
-		Entity* corpse = new Entity("Corpse", "The rotting " B_RED_ "Corpse" RESET_ " is difficult to look at. \nYou have never seen this many shades of green and grey. \nThe smell is nauseating. \nMaybe if you examine it closer you can find something of use...", main_room, true);
+		Entity* corpse = new Entity("Corpse", "The rotting " B_RED_ "Corpse" RESET_ " is difficult to look at. \nThe smell is nauseating. \nMaybe if you examine it closer you can find something of use...", main_room, true);
 		Entity* note = new Item("Note", "The " B_RED_ "Note" RESET_ " is torn and discolored. \nIt's obviously been here for some time. \nMaybe if you read it you can get some interesting information.", corpse);
-		note->SetReadable(true, "The " B_RED_ "Note" RESET_ " says: \n\nAlexsei, they finally came. \nIt had to happen eventually, the *REDACTED* came over and *REDACTED* Olga and Sofia. \nAll i could do was watch, I am so sorry. \nIf you're somehow alive, the Password for the " B_RED_ "Locker" RESET_ " is 1027.");
-		Item* blue_key = new Item("Blue Key", "Blue Key.", corpse);
+		note->SetReadable(true, "The " B_RED_ "Note" RESET_ " says: \n\nAlexsei, they finally came. \nIt had to happen eventually, the " STRIKETHROUGH_ "*REDACTED*" NO_STRIKETHROUGH_ " came over and " STRIKETHROUGH_ "*REDACTED*" NO_STRIKETHROUGH_ " Olga and Sofia. \nAll I could do was watch, I am so sorry. \nIf you're somehow alive, the Password for the " B_RED_ "Locker" RESET_ " is 1980.");
+		Item* blue_key = new Item("Blue Key", "A " B_RED_ "Blue Key" RESET_ ", maybe you could use it to open some door.", corpse);
 		// == Oxygen Store
-		Entity* shelf = new Entity("Shelf", "A large shelf with multiple objects, one of them is a Oxygen Tank, one of them is a Orange Key.", oxygen_store, true);
+		Entity* shelf = new Entity("Shelf", "A large shelf with multiple objects.", oxygen_store, true);
 		Item* oxygen_tank = new Item("Oxygen Tank", "A with 50% of Oxygen.", shelf);
 		oxygen_tank->SetOxygenProvided(50);
-		Item* orange_key = new Item("Orange Key", "Orange key.", shelf);
+		Item* orange_key = new Item("Orange Key", "A " B_RED_ "Orange Key" RESET_ ", maybe you could use it to open some door.", shelf);
 		// == Switch Room
-		Entity* generator = new Entity("Generator", "A " B_RED_ "Generator" RESET_ " with a switch i can activate, seems important to light all on.", switch_room, true);
+		Entity* generator = new Entity("Generator", "A " B_RED_ "Generator" RESET_ " with a switch you can activate, seems important to light all on.", switch_room, true);
 		generator->SetActivateable(true, false);
 		powerSource = generator;
-		Entity* locker = new Entity("Locker", "A locked locker, i need a number combination. \nI see through the glass a Red Key.", switch_room, true);
-		locker->SetUnlockable(true, true, "1027");
-		Item* red_key = new Item("Red Key", "Red Key.", locker);
+		Entity* locker = new Entity("Locker", "A locked " B_RED_ "Locker" RESET_ ", you need a number combination to unlock it.", switch_room, true);
+		locker->SetUnlockable(true, true, "1980");
+		Item* red_key = new Item("Red Key", "A " B_RED_ "Red Key" RESET_ ", maybe you could use it to open some door.", locker);
 		// == Vault Entrance
 
-		Entity* blue_door = new Entity("Blue Door", "It's a locked door. With some kind of blue lock.", entrance, true, blue_key);
-		Entity* orange_door = new Entity("Orange Door", "A door with a orange lock, seems i can open it with a key.", main_room, true, orange_key);
-		Entity* red_door = new Entity("Red Door", "A door with a red lock, seems i can open it with a key.", vault_entrance, true, red_key);
+
+		// == Doors
+		Entity* blue_door = new Entity("Blue Door", "A closed " B_RED_ "Blue Door" RESET_ " with a small window, leading to what appears to be a storage area. \nPerhaps you can open it with a key.", entrance, true, blue_key);
+		Entity* orange_door = new Entity("Orange Door", "Another closed " B_RED_ "Orange Door" RESET_ " with a small window, you'll need a new key... \nIt looks like this door leads to a place filled with cables.", main_room, true, orange_key);
+		Entity* red_door = new Entity("Red Door", "This " B_RED_ "Red Door" RESET_ " is different from the others, larger and stronger. \nYou can't see what's on the other side, but it looks interesting.", vault_entrance, true, red_key);
 
 	// === EXITS
 		// == Entrance
-		entrance->SetExit(EAST, rock, main_room, "Rock entrance", "Seems a entrance to a switch room.");
-		entrance->SetExit(SOUTH, blue_door, oxygen_store, "Blue door entrance", "Seems a entrance to a oxygen room.");
+		entrance->SetExit(EAST, rock, main_room, "Rock entrance", "Seems an entrance.");
+		entrance->SetExit(SOUTH, blue_door, oxygen_store, "Blue door entrance", "Seems an entrance.");
 		// == Main Room
-		main_room->SetExit(WEST, NULL, entrance, "Rock hole", "Seems a entrance to the entrance.");
-		main_room->SetExit(EAST, orange_door, switch_room, "Orange door entrance", "Seems a entrance to the switch room.");
-		main_room->SetExit(NORTH, NULL, vault_entrance, "Opened entrance", "Seems a entrance to the vault entrance room.");
+		main_room->SetExit(WEST, NULL, entrance, "Rock hole", "Seems an entrance.");
+		main_room->SetExit(EAST, orange_door, switch_room, "Orange door entrance", "Seems an entrance.");
+		main_room->SetExit(NORTH, NULL, vault_entrance, "Opened entrance", "Seems an entrance.");
 		// == Oxygen Store
-		oxygen_store->SetExit(NORTH, NULL, entrance, "Blue door entrance", "Seems a entrance to the entrance.");
+		oxygen_store->SetExit(NORTH, NULL, entrance, "Blue door entrance", "Seems an entrance.");
 		// == Switch Room
-		switch_room->SetExit(WEST, NULL, main_room, "Orange door entrance", "Seems a entrance to the main room.");
+		switch_room->SetExit(WEST, NULL, main_room, "Orange door entrance", "Seems an entrance.");
 		// == Vault Entrance
-		vault_entrance->SetExit(SOUTH, NULL, main_room, "Opened entrance", "Seems a entrance to the main room.");
-		vault_entrance->SetExit(EAST, red_door, vault, "Giant vault doot", "The entrance to de vault, good things be there.");
+		vault_entrance->SetExit(SOUTH, NULL, main_room, "Opened entrance", "Seems an entrance.");
+		vault_entrance->SetExit(EAST, red_door, vault, "Giant vault doot", "Seems an entrance.");
 
 	// === PLAYER
 		player = new Player("Explorer", "You are an explorer searching for water, your oxygen level is decreasing.", entrance);
@@ -163,7 +165,7 @@ void World::ProcessInput(vector<string>& args)
 	}
 
 	// == >> 
-	else cout << endl << "I don't understand you, what do you want me to do?" << endl << endl;
+	else cout << endl << "I don't understand you, what do you want to do?" << endl << endl;
 }
 
 Player* World::GetMainPlayer() {
@@ -173,10 +175,10 @@ Player* World::GetMainPlayer() {
 bool World::PlayerWin() {
 	if (player->room == finishRoom) {
 		if (powerSource->activated) { 
-			cout << "I can breath without any tank of oxygen, the generator is purifying the air of this room." << endl << endl;
+			cout << "You can breath without any tank of oxygen, the " B_RED_ "Generator" RESET_ " is purifying the air of the " B_BLUE_ "Vault" RESET_ "." << endl << endl;
 			return true;
 		}
-		else cout << "You forgot to activate the generator that provides the oxygen purifier." << endl << endl;
+		else cout << "You forgot to activate the " B_RED_ "Generator" RESET_ " that provides the purified oxygen to the " B_BLUE_ "Vault" RESET_ "." << endl << endl;
 	}
 	return false;
 }

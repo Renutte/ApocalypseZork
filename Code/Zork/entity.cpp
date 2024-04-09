@@ -84,7 +84,7 @@ void Entity::Look(string entity_name) const
 	cout << endl;
 	Entity* entity_to_look = FindChild(entity_name);
 	if (entity_to_look != NULL) entity_to_look->Look();
-	else cout << "I cant look this object." << endl;
+	else cout << "You cant look this object." << endl;
 	cout << endl;
 }
 
@@ -103,11 +103,11 @@ Entity* Entity::FindChild(string entity_name) const {
 
 void Entity::Examine(string entity_name) const {
 	cout << endl;
-	if (entity_name == "") cout << "What you want to examine?" << endl;
+	if (entity_name == "") cout << "What do you want to examine?" << endl;
 	else {
 		Entity* entity_to_examine = FindChild(entity_name);
-		if (entity_to_examine == NULL) cout << "I dont see any " << B_RED_ << entity_name << RESET_ << " near me" << endl;
-		else if (entity_to_examine->can_unlock && entity_to_examine->locked) cout << B_RED_ << entity_to_examine->name << RESET_ << " is locked, you cant examine this." << endl;
+		if (entity_to_examine == NULL) cout << "You dont see any " << B_RED_ << entity_name << RESET_ << " near you." << endl;
+		else if (entity_to_examine->can_unlock && entity_to_examine->locked) cout << B_RED_ << entity_to_examine->name << RESET_ << " is locked, you can't examine this." << endl;
 		else entity_to_examine->Examine();
 	}
 	cout << endl;
@@ -120,8 +120,8 @@ void Entity::Examine() const {
 	}
 	
 	if (visibleItems.empty()) {
-		if (parent == NULL) cout << "Nothing interesting in " << B_BLUE_ << name << RESET_ << endl;
-		else cout << "Nothing interesting in " << B_RED_ << name << RESET_ << endl;
+		if (parent == NULL) cout << "Nothing interesting in " << B_BLUE_ << name << RESET_ << "." << endl;
+		else cout << "Nothing interesting in " << B_RED_ << name << RESET_ << "." << endl;
 	}
 	else {
 		cout << "This " << B_BLUE_ << name << RESET_ << " contains a ";

@@ -50,7 +50,9 @@ int main()
     cout << "Your objective is to find a source of water." << endl;
     cout << "In the distance, you spot a cave and decide to enter." << endl;
     cout << "Inside the cave, you discover an abandoned settlement." << endl;
-    cout << "You decide to explore and see if you find anything interesting." << endl;
+    cout << "You decide to explore cautiously to conserve oxygen." << endl;
+    cout << "Remember, if you wander aimlessly, your oxygen will deplete rapidly." << endl;
+    cout << "Stick to safe paths and make strategic choices to preserve your resources." << endl;
 
     //cout << RESET_;
 
