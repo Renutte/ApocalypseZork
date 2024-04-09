@@ -67,6 +67,212 @@ The following list outlines the inputs that the game can recognize:
 Try to solve it without looking at the map! 😡
 ![Ejemplo de imagen](https://github.com/Renutte/ApocalypseZork/blob/d953f1a98be9a5a316869cf57b46a294130ab339/Map.png)
 
+## Input Scenarios
+Look at these different input scenarios if you want a guide:
+<details open>
+<summary>WIN (Arrived at vault with generator activated)</summary>
+<br>directions
+<br>look
+<br>explore
+<br>examine rock
+<br>examine blue door
+<br>look rock
+<br>look blue door
+<br>open blue door
+<br>push rock
+<br>directions
+<br>go east
+<br>look
+<br>explore
+<br>look corpse
+<br>look orange door
+<br>open orange door
+<br>open corpse
+<br>examine orange door
+<br>examine corpse
+<br>take note
+<br>take note from corpse
+<br>read note
+<br>take key from corpse
+<br>drop
+<br>take key from corpse
+<br>take blue key from corpse
+<br>explore
+<br>examine note
+<br>look note
+<br>direcrtions
+<br>directions
+<br>go west
+<br>explore
+<br>look blue door
+<br>open blue door with bloue key
+<br>open blue door
+<br>look
+<br>explore
+<br>directions
+<br>go south
+<br>explore
+<br>look
+<br>look shelf
+<br>examine shelf
+<br>take oxygen tank
+<br>drop
+<br>take oxygen tank
+<br>take oxygen tank from shelf
+<br>use
+<br>use oxygen tank
+<br>take orange key from shelf
+<br>drop
+<br>take orange key from shelf
+<br>explore
+<br>look blue key
+<br>look empty oxygen tank
+<br>directions
+<br>go north
+<br>directions
+<br>go east
+<br>directions
+<br>go east
+<br>open orange door
+<br>directions
+<br>go east
+<br>explore
+<br>look generator
+<br>look locker
+<br>unlock
+<br>locker
+<br>unlock locker
+<br>1980
+<br>turn on generator
+<br>explore
+<br>look
+<br>directions
+<br>explore
+<br>inventory
+<br>drop
+<br>take red key from locker
+<br>directions
+<br>go west
+<br>explore
+<br>directions
+<br>go north
+<br>explore
+<br>look
+<br>examine red door
+<br>look red door
+<br>drop
+<br>open red door
+<br>take red key
+<br>open red door
+<br>directions
+<br>go east
+</details>
+<details open>
+<summary>LOSE (Arrived at vault without generator activated)</summary>
+<br>directions
+<br>look
+<br>explore
+<br>examine rock
+<br>examine blue door
+<br>look rock
+<br>look blue door
+<br>open blue door
+<br>push rock
+<br>directions
+<br>go east
+<br>look
+<br>explore
+<br>look corpse
+<br>look orange door
+<br>open orange door
+<br>open corpse
+<br>examine orange door
+<br>examine corpse
+<br>take note
+<br>take note from corpse
+<br>read note
+<br>take key from corpse
+<br>drop
+<br>take key from corpse
+<br>take blue key from corpse
+<br>explore
+<br>examine note
+<br>look note
+<br>direcrtions
+<br>directions
+<br>go west
+<br>explore
+<br>look blue door
+<br>open blue door with bloue key
+<br>open blue door
+<br>look
+<br>explore
+<br>directions
+<br>go south
+<br>explore
+<br>look
+<br>look shelf
+<br>examine shelf
+<br>take oxygen tank
+<br>drop
+<br>take oxygen tank
+<br>take oxygen tank from shelf
+<br>use
+<br>use oxygen tank
+<br>take orange key from shelf
+<br>drop
+<br>take orange key from shelf
+<br>explore
+<br>look blue key
+<br>look empty oxygen tank
+<br>directions
+<br>go north
+<br>directions
+<br>go east
+<br>directions
+<br>go east
+<br>open orange door
+<br>directions
+<br>go east
+<br>explore
+<br>look generator
+<br>look locker
+<br>unlock
+<br>locker
+<br>unlock locker
+<br>1980
+<br>explore
+<br>look
+<br>directions
+<br>explore
+<br>inventory
+<br>drop
+<br>take red key from locker
+<br>directions
+<br>go west
+<br>explore
+<br>directions
+<br>go north
+<br>explore
+<br>look
+<br>examine red door
+<br>look red door
+<br>drop
+<br>open red door
+<br>take red key
+<br>open red door
+<br>directions
+<br>go east
+</details>
+<details open>
+<summary>LOSE (Ran out of oxygen before reaching the vault)</summary>
+<br>push rock
+<br>go east
+<br>go west
+<br>go east
+<br>go west
+</details>
+
 # MIT License
 
 Copyright (c) 2024 Daniel Zimmermann García
