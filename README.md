@@ -61,6 +61,7 @@ The following list outlines the inputs that the game can recognize:
 | `drop`                                                           | Drop the item you are holding                       | -                      |
 | `drop [Item]`                                                    | Drop the specified item you are holding             | Item name              |
 | `take [Item] from [Object]`<br>`get [Item] from [Object]`        | Take a specific item from an object                 | Item name, Object name |
+| `place [Item] in [Object]`<br>`put [Item] in [Object]`           | Place a specific item into an object                | Item name, Object name |
 
 ## Map
 Try to solve it without looking at the map! 😡

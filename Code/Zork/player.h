@@ -19,22 +19,23 @@ public:
 	void Look() const;
 	void Examine() const;
 	void Oxygen();
-	bool IsDead();
+	bool IsDead() const;
 	void Go(string direction_name);
 	void Directions() const;
 	void Take(string object_name);
-	void Open(string object_name);
+	void Open(string object_name) const;
 	void Drop(string object_name);
-	void Inventory();
+	void Inventory() const;
 	void Take(string object_name, string from_object_name);
-	void Push(string object_name);
-	void Read(string object_name);
-	void Activate(string object_name);
-	void Unlock(string object_name);
+	void Place(string object_name, string into_object_name);
+	void Push(string object_name) const;
+	void Read(string object_name) const;
+	void Activate(string object_name) const;
+	void Unlock(string object_name) const;
 	void Use(string object_name);
 	void SetRemainingOxygen(int new_oxygen);
 	void SetOxygenLoosedPerMovement(int new_oxygen);
-	void PrintRoomInfo();
+	void PrintOxygenAndRoomInfo();
 
 public:
 	Room* room;

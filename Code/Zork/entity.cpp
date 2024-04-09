@@ -23,6 +23,7 @@ Entity::Entity(const char* name, const char* description, Entity* parent, bool v
 	activated = false;
 	can_unlock = false;
 	password = "";
+	can_store = false;
 }
 
 Entity::~Entity()
@@ -30,48 +31,63 @@ Entity::~Entity()
 	
 }
 
+// Change storable permission (player can place items inside)
+void Entity::SetStorable(bool storable) {
+	can_store = storable;
+}
+
+// Change the name of this entity by the provided
 void Entity::ChangeNameTo(string new_name) {
 	name = new_name;
 }
 
+// Change the description of this entity by the provided
 void Entity::ChangeDescriptionTo(string new_description) {
 	description = new_description;
 }
 
-Item* Entity::GetItemProperties() {
+// Return the item that can open this entity
+Item* Entity::GetItemProperties() const{
 	return opens;
 }
 
+// Change locked state
 void Entity::SetLockedTo(bool new_state) {
 	locked = new_state;
 }
+
+// Change unlockable permission
 void Entity::SetUnlockable(bool unlockable, bool is_locked, string password_to_set) {
 	locked = is_locked;
 	can_unlock = unlockable;
 	password = password_to_set;
 }
 
-// Pushable entities disappear when pushed
+// Change pushable permission
+// (Pushable entities disappear when pushed)
 void Entity::SetPushable(bool pushable, string pushed_description) {
 	can_push = pushable;
 	text_when_pushed = pushed_description;
 }
 
+// Change readable permission
 void Entity::SetReadable(bool readable, string read_text) {
 	read_description = read_text;
 	can_read = readable;
 }
 
-
+// Change activation permission
 void Entity::SetActivateable(bool activetable, bool default_state) {
 	can_activate = activetable;
 	activated = default_state;
 }
 
+// Change activated state
 void Entity::SetActiveTo(bool activation) {
 	activated = activation;
 }
 
+// Change the parent of the specified object by other
 void Entity::ChangeParentTo(Entity* new_parent)
 {
 	if (parent != NULL) parent->container.remove(this);
@@ -79,6 +95,7 @@ void Entity::ChangeParentTo(Entity* new_parent)
 	if (parent != NULL) parent->container.push_back(this);
 }
 
+// Prints the description of the specified child by his name
 void Entity::Look(string entity_name) const
 {
 	cout << endl;
@@ -88,12 +105,13 @@ void Entity::Look(string entity_name) const
 	cout << endl;
 }
 
+// Prints the description of this entity
 void Entity::Look() const
 {
-	//cout << B_RED_ << name << RESET_ << endl;
 	cout << description << endl;
 }
 
+// Returns a specified child by his name
 Entity* Entity::FindChild(string entity_name) const {
 	for (const auto& entity : container) {
 		if ((Same(entity->name, entity_name))) return entity;
@@ -101,6 +119,7 @@ Entity* Entity::FindChild(string entity_name) const {
 	return NULL;
 }
 
+// Prints what contains the specified child by his name
 void Entity::Examine(string entity_name) const {
 	cout << endl;
 	if (entity_name == "") cout << "What do you want to examine?" << endl;
@@ -113,6 +132,7 @@ void Entity::Examine(string entity_name) const {
 	cout << endl;
 }
 
+// Prints what contains this entity
 void Entity::Examine() const {
 	list<string> visibleItems;
 	for (auto& entity : container) {

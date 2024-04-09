@@ -18,12 +18,12 @@ class Room : public Entity
 public:
 	Room(const char* name, const char* description);
 	void SetExit(Direction direction, Entity* obstruction_object, Room* destination, const char* name, const char* description);
-	void Look();
-	Exit* GetExit(Direction direction);
-	//Exit GetExitInfo(Direction direction);
-	void RemoveObstruction(Direction direction);
-	void Directions();
-	void UnlockExit(Entity* obstruction_object);
+	void Look() const;
+	Exit* GetExit(Direction direction) const;
+	void RemoveObstruction(Direction direction) const;
+	void Directions() const;
+	void UnlockExit(Entity* obstruction_object) const;
+	void SetVisited();
 
 public:
 	Exit* north_exit;

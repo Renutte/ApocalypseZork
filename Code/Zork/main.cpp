@@ -14,23 +14,6 @@ int main()
     // == For emojis
     SetConsoleOutputCP(CP_UTF8);
 
-    // == Text colors
-    //cout << RED_ << "Red" << RESET_ << " || ";
-    //cout << GREEN_ << "Green" << RESET_ << " || ";
-    //cout << YELLOW_ << "Yellow" << RESET_ << " || ";
-    //cout << BLUE_ << "Blue" << RESET_ << " || ";
-    //cout << MAGENTA_ << "Magenta" << RESET_ << " || ";
-    //cout << CYAN_ << "Cyan" << RESET_ << " || ";
-    //cout << WHITE_ << "White" << RESET_ << " || ";
-    //cout << B_BLACK_ << "Bright Black" << RESET_ << " || ";
-    //cout << B_RED_ << "Bright Red" << RESET_ << " || ";
-    //cout << B_GREEN_ << "Bright Green" << RESET_ << " || ";
-    //cout << B_YELLOW_ << "Bright Yellow" << RESET_ << " || ";
-    //cout << B_BLUE_ << "Bright Blue" << RESET_ << " || ";
-    //cout << B_MAGENTA_ << "Bright Magenta" << RESET_ << " || ";
-    //cout << B_CYAN_ << "Bright Cyan" << RESET_ << " || ";
-    //cout << B_WHITE_ << "Bright White" << RESET_ << endl;
-
     // == Title
     cout << B_RED_;
     cout << endl;
@@ -59,29 +42,30 @@ int main()
     cout << "Movement consumes oxygen, don't waste it by exploring unnecessarily." << endl;
     cout << RESET_;
 
-    //cout << RESET_;
-
     // == Runtime
     string player_input;
     vector<string> args;
     args.reserve(10);
     vector<string> all_inputs;
-    
     World world;
-    bool restart_game = true;
 
-    world.player->PrintRoomInfo();
+    // Initial information Look() and Oxygen()
+    world.player->PrintOxygenAndRoomInfo();
     
+    // Read inputs
     while (true) {
+        // If player finished and win
         if (world.PlayerWin()) {
             cout << EMOJI_TROPHY << " YOU WON " << EMOJI_TROPHY << endl;
             cout << endl;
             break;
         }
+        // If player dead
         if (world.GetMainPlayer()->IsDead()) {
             cout << EMOJI_SKULL << " YOU DIED " << EMOJI_SKULL << endl;
             break;
         }
+        // If player still alive and dont win
         cout << B_BLACK_;
         cout << "> ";
         getline(cin, player_input);
@@ -99,22 +83,13 @@ int main()
     cout << "> ";
     getline(cin, player_input);
     if (Same(player_input, "Y") || Same(player_input, "Yes")) {
-        cout << endl << "Commands amount used: " << all_inputs.size() << endl;
-        cout << endl << "All inputs:" << endl;
+        cout << endl << " ==>> All inputs:" << endl;
+        cout << endl;
         for (const string& input : all_inputs) {
             cout << input << endl;
         }
+        cout << endl << " ==>> Commands amount used: " << all_inputs.size() << endl;
     }
-
-    //// == Restart game
-    //cout << endl << "You want to restart the game? (Y/N)" << endl;
-    //cout << endl;
-    //cout << "> ";
-    //getline(cin, player_input);
-    //if (Same(player_input, "Y") || Same(player_input, "Yes")) {
-    //    main();
-    //    all_inputs.clear();
-    //}
 
     // == Final text
     cout << endl << "Thanks for playing :)" << endl;

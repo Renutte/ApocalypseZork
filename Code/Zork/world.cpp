@@ -7,9 +7,9 @@
 #include "player.h"
 #include "world.h"
 
+// Initialize all objects in the world
 World::World()
 {
-
 	// === ROOMS
 		Room* entrance = new Room("Entrance", "A place filled with dust, it seems like no one has been here for a long time.\nVegetation is invading this space.");
 		Room* main_room = new Room("Main room", "The main linving room, smells bad. \nThere is blood on the walls, it seems that there has been a massacre.");
@@ -25,11 +25,13 @@ World::World()
 		rock->SetPushable(true, "You push the " B_RED_ "Rock" RESET_ ", causing it to shift slightly. \nPushing it a second time, you throw your entire body into it to make it budge, and the rock falls over. \nRevealing an opening in the wall.");
 		// == Main Room
 		Entity* corpse = new Entity("Corpse", "The rotting " B_RED_ "Corpse" RESET_ " is difficult to look at. \nThe smell is nauseating. \nMaybe if you examine it closer you can find something of use...", main_room, true);
+		corpse->SetStorable(true);
 		Entity* note = new Item("Note", "The " B_RED_ "Note" RESET_ " is torn and discolored. \nIt's obviously been here for some time. \nMaybe if you read it you can get some interesting information.", corpse);
 		note->SetReadable(true, "The " B_RED_ "Note" RESET_ " says: \n\nAlexsei, they finally came. \nIt had to happen eventually, the " STRIKETHROUGH_ "*REDACTED*" NO_STRIKETHROUGH_ " came over and " STRIKETHROUGH_ "*REDACTED*" NO_STRIKETHROUGH_ " Olga and Sofia. \nAll I could do was watch, I am so sorry. \nIf you're somehow alive, the Password for the " B_RED_ "Locker" RESET_ " is 1980.");
 		Item* blue_key = new Item("Blue Key", "A " B_RED_ "Blue Key" RESET_ ", maybe you could use it to open some door.", corpse);
 		// == Oxygen Store
 		Entity* shelf = new Entity("Shelf", "A large shelf with multiple objects.", oxygen_store, true);
+		shelf->SetStorable(true);
 		Item* oxygen_tank = new Item("Oxygen Tank", "A with 50% of Oxygen.", shelf);
 		oxygen_tank->SetOxygenProvided(50);
 		Item* orange_key = new Item("Orange Key", "A " B_RED_ "Orange Key" RESET_ ", maybe you could use it to open some door.", shelf);
@@ -39,6 +41,7 @@ World::World()
 		powerSource = generator;
 		Entity* locker = new Entity("Locker", "A locked " B_RED_ "Locker" RESET_ ", you need a number combination to unlock it.", switch_room, true);
 		locker->SetUnlockable(true, true, "1980");
+		locker->SetStorable(true);
 		Item* red_key = new Item("Red Key", "A " B_RED_ "Red Key" RESET_ ", maybe you could use it to open some door.", locker);
 		// == Vault Entrance
 
@@ -70,7 +73,8 @@ World::World()
 		player->SetOxygenLoosedPerMovement(10);
 }
 
-void World::ProcessInput(vector<string>& args)
+// Process all inputs and call the respective functions
+void World::ProcessInput(vector<string>& args) const
 {
 	// == Remove empty slots from arguments
 	for (unsigned int i = 1; i < args.size(); ++i) {
@@ -82,79 +86,79 @@ void World::ProcessInput(vector<string>& args)
 
 	// == Process inputs
 	
-	// == >> 
+	// == >> Examine -> Check contents of the specified object
 	if (Same(args[0], "examine")) player->parent->Examine(combineValues(args, args[0], ""));
 	
-	// == >> 
+	// == >> Open -> Attempt to open the specified object
 	else if (Same(args[0], "open"))player->Open(combineValues(args, args[0], ""));
 	
-	// == >> 
+	// == >> Unlock -> Attempt to unlock the specified object
 	else if (Same(args[0], "unlock")) player->Unlock(combineValues(args, args[0], ""));
 	
-	// == >> 
+	// == >> Push -> Push the specified object
 	else if (Same(args[0], "push")) player->Push(combineValues(args, args[0], ""));
 	
-	// == >> 
+	// == >> Use -> Refill the player's oxygen tank
 	else if (Same(args[0], "use")) player->Use(combineValues(args, args[0], ""));
 	
-	// == >> 
+	// == >> Activate -> Try to turn on the specified object
 	else if (Same(args[0], "activate")) player->Activate(combineValues(args, args[0], ""));
 	else if ((Same(args[0], "turn") || Same(args[0], "switch")) && Same(args[1], "on")) player->Activate(combineValues(args, args[1], ""));
 	
-	// == >> 
+	// == >> GO -> Move in the specified direction
 	else if (Same(args[0], "go") || Same(args[0], "move")) player->Go(combineValues(args, args[0], ""));
 	
-	// == >> 
-	else if (Same(args[0], "look") /* || Same(args[0], "check") */ ) {
+	// == >> Look -> Provide detailed description
+	else if (Same(args[0], "look")) {
 		if (args.size() == 1) player->Look(); // Without arguments
 		else player->parent->Look(combineValues(args, args[0], "")); // With arguments
 	}
 
-	// == >> 
+	// == >> Directions -> Display available directions
 	else if (Same(args[0], "directions")) {
 		// Maybe "Check directions" ??
 		if (args.size() == 1) player->Directions(); // Without arguments
 		else cout << endl << "I gather that you want to know about directions to go, but I don't understand you." << endl << endl; // With arguments
 	}
 
-	// == >> 
+	// == >> Explore -> List all objects in the current room
 	else if (Same(args[0], "explore")) {
 		if (args.size() == 1) player->Examine(); // Without arguments
 		else if (args.size() == 2 && Same(args[1], "room")) player->Examine(); // Without arguments
 		else cout << endl << "I gather that you want to explore this place, but I don't understand you." << endl << endl; // With arguments
 	}
 
-	// == >> 
+	// == >> Inventory -> Describe the item you are holding
 	else if (Same(args[0], "inventory")) {
 		// Maybe "Check inventory" ??
 		if (args.size() == 1) player->Inventory(); // Without arguments
 		else cout << endl << "I gather that you want to see your inventory, but I don't understand you." << endl << endl; // With arguments
 	}
 
-	// == >> 
+	// == >> Read -> Read the item
 	else if (Same(args[0], "read")) {
 		if (args.size() == 1) player->Read(""); // Without arguments
 		else player->Read(combineValues(args, args[0], "")); // With arguments
 	}
 
-	// == >> 
+	// == >> Drop -> Drop the item you are holding
 	else if (Same(args[0], "drop")) {
 		if (args.size() == 1) player->Drop(""); // Without arguments
 		else player->Drop(combineValues(args, args[0], "")); // With arguments
 	}
 
-	// == >> 
+	// == >> Oxygen -> Show the player oxygen levels
 	else if (Same(args[0], "oxygen")) {
 		// Maybe "Check oxygen" ??
 		if (args.size() == 1) player->Oxygen(); // Without arguments
 		else cout << endl << "I gather that you want to know your oxygen levels, but I don't understand you." << endl << endl; // With arguments
 	}
 
-	// == >> 
+	// == >> Take -> Take a specific item from an object
 	else if (Same(args[0], "take") || Same(args[0], "get")) {
 		if (args.size() > 1) {
 			string object_name = combineValues(args, args[0], "from");
-			if (object_name == "") object_name = combineValues(args, "take", "");
+			if (object_name == "") object_name = combineValues(args, args[0], "");
 			string from_name = combineValues(args, "from", "");
 			if (from_name != "") player->Take(object_name, from_name);
 			else player->Take(object_name);
@@ -164,15 +168,30 @@ void World::ProcessInput(vector<string>& args)
 		}
 	}
 
-	// == >> 
+	// == >> Place -> Place a specific item into an object
+	else if (Same(args[0], "put") || Same(args[0], "place")) {
+		if (args.size() > 1) {
+			string object_name = combineValues(args, args[0], "in");
+			string from_name = combineValues(args, "in", "");
+			if (from_name != "") player->Place(object_name, from_name);
+			else cout << endl << "I gather that you want to place something, but I don't understand you." << endl << endl; // With arguments
+		}
+		else {
+			cout << endl << "I gather that you want to place something, but I don't understand you." << endl << endl; // With arguments
+		}
+	}
+
+	// == >> Input not recognized
 	else cout << endl << "I don't understand you, what do you want to do?" << endl << endl;
 }
 
-Player* World::GetMainPlayer() {
+Player* World::GetMainPlayer() const {
 	return player;
 }
 
-bool World::PlayerWin() {
+// Check if player has finished and if has won or loose 
+// (not finished return false) (if finished return true and prints message)
+bool World::PlayerWin() const {
 	if (player->room == finishRoom) {
 		if (powerSource->activated) { 
 			cout << "You can breath without any tank of oxygen, the " B_RED_ "Generator" RESET_ " is purifying the air of the " B_BLUE_ "Vault" RESET_ "." << endl << endl;

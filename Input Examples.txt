@@ -1,0 +1,512 @@
+
+----- DIED (Final room but generator not activated) -----
+
+look
+explore
+examine rock
+examine blue door
+open blue door
+open rock
+open a
+look rock
+push rock
+directions
+go east
+explore
+look corpse
+examine corpse
+take note from corpse
+read note
+take blue key from corpse
+drop
+take blue key from corpse
+directions
+go west
+open blue door
+directions
+go south
+explore
+examine shelf
+take oxygen tank from shelf
+drop
+take oxygen tank from shelf
+use oxygen tank
+take orange key from shelf
+drop
+take orange key from shelf
+directions
+go north
+directions
+go east
+open orange door
+directions
+east
+go east
+explore
+examine locker
+unlock locker
+4
+unlock locker
+1027
+examine locker
+take Red key
+drop
+take Red key
+take Red key from locker
+directions
+go west
+directions
+go north
+explore
+open red door
+go east
+
+----- WIN -----
+
+look
+explore
+examine rock
+examine blue door
+open blue door
+open rock
+open a
+look rock
+push rock
+directions
+go east
+explore
+look corpse
+examine corpse
+take note from corpse
+read note
+take blue key from corpse
+drop
+take blue key from corpse
+directions
+go west
+open blue door
+directions
+go south
+explore
+examine shelf
+take oxygen tank from shelf
+drop
+take oxygen tank from shelf
+use oxygen tank
+take orange key from shelf
+drop
+take orange key from shelf
+directions
+go north
+directions
+go east
+open orange door
+directions
+east
+go east
+explore
+activate generator
+examine locker
+unlock locker
+4
+unlock locker
+1027
+examine locker
+take Red key
+drop
+take Red key
+take Red key from locker
+directions
+go west
+directions
+go north
+explore
+open red door
+go east
+
+----- DIED (Normal room out of oxygen) -----
+
+look
+explore
+examine rock
+examine bdoor
+open bdoor
+open rock
+open a
+look rock
+push rock
+directions
+go east
+go west
+go east
+go west
+
+----- ALL TEST -----
+look
+directions
+explore
+inventory
+read
+drop
+oxygen
+
+--------------
+
+push Rock
+move East
+go East
+explore
+examine Corpse
+examine Note
+take Note
+take Nothe from Corpse
+take Note from Corpse
+examine Note
+read Note
+take Blue Key from Corpse
+drop Note
+take Blue Key from Corpse
+go West
+explore
+open Blue Door
+explore
+examine
+directions
+go South
+explore
+examine Shelf
+take Oxygen Tank
+drop blue key
+take oxygen tank
+take oxygen tank from shelf
+examine oxygen tank
+use oxygen tank
+take orange key from shelf
+drop empty oxygen tank
+take orange key from shelf
+directions
+go north
+go east
+explore
+open orange door
+directions
+go east
+explore
+open locker
+examine locker
+unlock locker
+1027
+examine locker
+drop orange key
+take red key from locker
+examine generator
+look generator
+switch on generator
+turn on generator
+activate generator
+directions
+go west
+directions
+go north
+explore
+open red door
+inventory
+go east
+
+
+------------------
+
+directions
+look
+explore
+examine rock
+examine blue door
+look rock
+look blue door
+open blue door
+push rock
+directions
+go east
+look
+explore
+look corpse
+look orange door
+open orange door
+open corpse
+examine orange door
+examine corpse
+take note
+take note from corpse
+read note
+take key from corpse
+drop
+take key from corpse
+take blue key from corpse
+explore
+examine note
+look note
+direcrtions
+directions
+go west
+explore
+look blue door
+open blue door with bloue key
+open blue door
+look
+explore
+directions
+go south
+explore
+look
+look shelf
+examine shelf
+take oxygen tank
+drop
+take oxygen tank
+take oxygen tank from shelf
+use
+use oxygen tank
+take orange key from shelf
+drop
+take orange key from shelf
+explore
+look blue key
+look empty oxygen tank
+directions
+go north
+directions
+go east
+directions
+go east
+open orange door
+directions
+go east
+explore
+look generator
+look locker
+unlock
+locker
+unlock locker
+1980
+unlock generator
+turn generator
+switch generator
+switch generato
+turn on generator
+explore
+look
+directions
+explore
+inventory
+drop
+take red key from locker
+directions
+go west
+explore
+directions
+go north
+explore
+look
+examine red door
+look red door
+drop
+open red door
+take red key
+open red door
+directions
+go east
+
+
+----------
+
+directions
+look
+explore
+examine rock
+examine blue door
+look rock
+look blue door
+open blue door
+push rock
+directions
+go east
+look
+explore
+look corpse
+look orange door
+open orange door
+open corpse
+examine orange door
+examine corpse
+take note
+take note from corpse
+read note
+take key from corpse
+drop
+take key from corpse
+take blue key from corpse
+explore
+examine note
+look note
+direcrtions
+directions
+go west
+explore
+look blue door
+open blue door with bloue key
+open blue door
+look
+explore
+directions
+go south
+explore
+look
+look shelf
+examine shelf
+take oxygen tank
+drop
+take oxygen tank
+take oxygen tank from shelf
+use
+use oxygen tank
+take orange key from shelf
+drop
+take orange key from shelf
+explore
+look blue key
+look empty oxygen tank
+directions
+go north
+directions
+go east
+directions
+go east
+open orange door
+directions
+go east
+explore
+look generator
+look locker
+unlock
+locker
+unlock locker
+1980
+unlock generator
+explore
+look
+directions
+explore
+inventory
+drop
+take red key from locker
+directions
+go west
+explore
+directions
+go north
+explore
+look
+examine red door
+look red door
+drop
+open red door
+take red key
+open red door
+directions
+go east
+
+
+----------
+
+directions
+look
+explore
+examine rock
+examine blue door
+look rock
+look blue door
+open blue door
+push rock
+directions
+go east
+look
+explore
+look corpse
+look orange door
+open orange door
+open corpse
+examine orange door
+examine corpse
+take note
+take note from corpse
+read note
+take key from corpse
+drop
+take key from corpse
+take blue key from corpse
+explore
+examine note
+look note
+direcrtions
+directions
+go west
+explore
+look blue door
+open blue door with bloue key
+open blue door
+look
+explore
+directions
+go south
+explore
+look
+look shelf
+examine shelf
+take oxygen tank
+drop
+take oxygen tank
+take oxygen tank from shelf
+use
+use oxygen tank
+take orange key from shelf
+drop
+take orange key from shelf
+explore
+look blue key
+look empty oxygen tank
+directions
+go north
+directions
+go east
+directions
+go east
+open orange door
+directions
+go east
+explore
+look generator
+look locker
+unlock
+locker
+unlock locker
+1980
+unlock generator
+turn generator
+switch generator
+switch generato
+turn on generator
+explore
+look
+directions
+explore
+inventory
+drop
+take red key from locker
+directions
+go west
+explore
+directions
+go north
+go south
+go north
+go south

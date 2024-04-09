@@ -15,9 +15,9 @@ class World
 {
 public:
 	World();
-	void ProcessInput(vector<string>& args);
-	Player* GetMainPlayer();
-	bool PlayerWin();
+	void ProcessInput(vector<string>& args) const;
+	Player* GetMainPlayer() const;
+	bool PlayerWin() const;
 
 public:
 	Player* player;

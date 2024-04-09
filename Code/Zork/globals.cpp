@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <cctype>
 
+// Return true if the two strings provided are the same (for capital letters comparaisons)
 bool Same(const string& a, const string& b)
 {
 	return _stricmp(a.c_str(), b.c_str()) == 0;
@@ -17,6 +18,7 @@ bool Same(const string& a, const char* b)
 	return _stricmp(a.c_str(), b) == 0;
 }
 
+// Parse the direction to a string
 string directionToString(Direction dir) {
 	switch (dir) {
 	case SOUTH:
@@ -32,6 +34,7 @@ string directionToString(Direction dir) {
 	}
 }
 
+// Parse the string to a direction
 Direction stringToDirection(const string& str) {
 	string lowerStr = str;
 	transform(lowerStr.begin(), lowerStr.end(), lowerStr.begin(),
@@ -54,11 +57,7 @@ Direction stringToDirection(const string& str) {
 	}
 }
 
-int Roll(int min, int max)
-{
-	return (max > 0) ? min + (rand() % (max - min)) : 0;
-}
-
+// Splits the provided string and returned in "arguments"
 void Tokenize(const string& line, vector<string>& arguments)
 {
 	const char* str = line.c_str();
@@ -74,18 +73,8 @@ void Tokenize(const string& line, vector<string>& arguments)
 	} while (0 != *str++);
 }
 
-string ConcatenateArgs(const vector<string>& args, size_t startIdx) {
-	string concatenated;
-	for (size_t i = startIdx; i < args.size(); ++i) {
-		concatenated += args[i];
-		if (i < args.size() - 1) {
-			concatenated += " ";
-		}
-	}
-	return concatenated;
-}
-
-
+// Concatenate arguments of a vector from X value of the vector to X value of the vector
+// Example: args="take Orange Key from Corpse" -> combineValues(args, "take", "Corpse") returns "Orange Key"
 string combineValues(const vector<string>& args, const string& startString, const string& endString) {
 	size_t startIndex = 0;
 	size_t endIndex = args.size();

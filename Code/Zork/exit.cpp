@@ -9,7 +9,7 @@ Exit::Exit(Direction direction, Entity* obstruction_object, Room* destination, c
 {
 }
 
-
+// Removes the obstruction
 void Exit::RemoveObstruction() {
 	obstruction_object = NULL;
 }

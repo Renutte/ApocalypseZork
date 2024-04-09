@@ -32,8 +32,9 @@ public:
 	void SetActivateable(bool activetable, bool default_state);
 	void SetLockedTo(bool new_state);
 	void SetUnlockable(bool unlockable, bool is_locked, string password_to_set);
-	Item* GetItemProperties();
+	Item* GetItemProperties() const;
 	void ChangeDescriptionTo(string new_description);
+	void SetStorable(bool storable);
 
 public:
 	string name;
@@ -58,6 +59,8 @@ public:
 	bool can_unlock;
 	bool locked;
 	string password;
+	// Is a entity that can store objects
+	bool can_store;
 };
 
 #endif
