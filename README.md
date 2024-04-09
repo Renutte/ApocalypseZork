@@ -69,8 +69,8 @@ Try to solve it without looking at the map! 😡
 
 ## Input Scenarios
 Look at these different input scenarios if you want a guide:
-<details open>
-<summary>WIN (Arrived at vault with generator activated)</summary>
+<details>
+<summary>🏆 WIN (Arrived at vault with generator activated)</summary>
 <br>directions
 <br>look
 <br>explore
@@ -167,8 +167,8 @@ Look at these different input scenarios if you want a guide:
 <br>directions
 <br>go east
 </details>
-<details open>
-<summary>LOSE (Arrived at vault without generator activated)</summary>
+<details>
+<summary>💀 LOSE (Arrived at vault without generator activated)</summary>
 <br>directions
 <br>look
 <br>explore
@@ -264,8 +264,8 @@ Look at these different input scenarios if you want a guide:
 <br>directions
 <br>go east
 </details>
-<details open>
-<summary>LOSE (Ran out of oxygen before reaching the vault)</summary>
+<details>
+<summary>💀 LOSE (Ran out of oxygen before reaching the vault)</summary>
 <br>push rock
 <br>go east
 <br>go west
