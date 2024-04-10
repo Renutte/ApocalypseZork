@@ -13,8 +13,8 @@ Author: *Daniel Zimmermann García*
 # Guide
 ## Download and execution
 
-To start the game, simply download [here](https://github.com/Renutte/ApocalypseZork/releases/tag/ApocalypseZork_v1.1) the release and run the ".exe" file. <br>
-Alternatively, you can download the [source code](https://github.com/Renutte/ApocalypseZork/releases/tag/ApocalypseZork_v1.1) and compile it using Visual Studio (VS).
+To start the game, simply download [here](https://github.com/Renutte/ApocalypseZork/releases/tag/ApocalypseZork_v1.2) the release and run the ".exe" file. <br>
+Alternatively, you can download the [source code](https://github.com/Renutte/ApocalypseZork/releases/tag/ApocalypseZork_v1.2) and compile it using Visual Studio (VS).
 
 ## History context
 
